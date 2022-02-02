@@ -3,7 +3,7 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: home
-title: Algorithms for lattice problems in NP cap CoNP
+title: Algorithms for lattice problems in NP intersect CoNP
 ---
 
 This site is dedicated to organizing and presenting what is known about the class of lattice problems that may have efficient algorithms.  It is intended to be a living document that is updated as information comes in and as time permits.  
@@ -15,7 +15,7 @@ Here is a picture from [arxiv.org/2201.13450](https://arxiv.org/abs/2201.13450):
 
 <center>
 <img  
-  src = "assets/img/pic-ranges.pdf"
+  src = "/assets/img/pic-ranges.jpg"
   width="75%">
 </center>
  
