@@ -1,3 +1,6 @@
+# bundle exec jekyll serve
+#   C-c C-e C-b h h  (export, body only, html file)
+#
 #+STARTUP: showall indent
 #+STARTUP: hidestars
 #+BEGIN_EXPORT html
@@ -8,6 +11,9 @@
 layout: home
 title: Algorithms for lattice problems in NP \(\cap\) CoNP
 ---
+#+END_EXPORT
+
+#+BEGIN_EXPORT html
 <head>
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -325,13 +331,17 @@ Here is a picture from [[https://arxiv.org/2201.13450][arxiv.org/abs/2201.13450]
 
 The right three regions represent NP intersect CoNP, but most work has focused on the left two regions.  From an algorithms perspective, the natural approach is to push from the right side where algorithms are known.  Let's do that and determine where the boundaries are.
 
-
 To participate send email to {{ site.email }}.  Suggestions about all topics related to this site are welcome.  This includes technical information, how to organize topics, how to visualize what is known, anything at all.  Help can be public, private, or anoymous.  
+
+* Upcoming topics
+
+1. What does it take to believe that no efficient algorithm exists for a computational problem?
+2. Does the worst-to-aveage case reduction from lattice problems to LWE have a complexity flavor, or is it more like discrete log?
 
 * Questions
 
-1. Which subexponential approximation factor assumptions have been made for fully-homomorphic encryption, and how do they relate to the recent algorithms?
-
+1. Why does [[https://latticechallenge.org][latticechallenge.org]] only have $q$ = prime and the power-of-two case?
+2. Which subexponential approximation factor assumptions have been made for fully-homomorphic encryption, and how do they relate to the recent algorithms?
 
 * Open Problems
 
