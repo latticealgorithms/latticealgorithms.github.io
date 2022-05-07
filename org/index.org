@@ -319,11 +319,10 @@ title: Algorithms for lattice problems in NP \(\cap\) CoNP
 #+LATEX_HEADER: \usepackage{enumitem}
 #+LATEX_HEADER: \setlist{nosep}
 
-#+BEGIN_COMMENT
-#+ATTR_HTML: :style margin-left: auto; margin-right: auto;
-#+ATTR_HTML: :width 100 
+#+ATTR_HTML: :style width: 40%
+#+ATTR_HTML: :align right
 [[file:assets/img/xyz.svg]]
-#+END_COMMENT
+
 
 This site is dedicated to organizing and presenting what is known about the class of lattice problems that may have efficient algorithms.  It is intended to be a living document that is updated as information comes in and as time permits.  
 
@@ -361,7 +360,7 @@ A lot of amazing tools have been developed in lattice-based cryptography over th
 
 * Reductions are the tool to compare the relative computational difficulty of problems
 
-In computer science there are not good tools to prove that efficient algorithms don't exist to solve a problem.  Most problem in NP either have polynomial-time algorithm or they can be shown to be NP-complete.  NP-complete are not generally believed to have efficient classical or quantum algorithms, but they are not the topic of this site.  Here the focus in on problems that are in NP$\cap$CoNP.  This includes the class of polynomial-time solvable problems.
+In computer science there are not good tools to prove that efficient algorithms don't exist to solve a problem.  Most problem in NP either have a polynomial-time algorithm or they can be shown to be NP-complete.  NP-complete are not generally believed to have efficient classical or quantum algorithms, but they are not the topic of this site.  Here the focus in on problems that are in NP$\cap$CoNP.  This includes the class of polynomial-time solvable problems.
 
 A problem $A$ reduces to a problem $B$, written $A \leq B$, if an algorithm for $B$ can be used to solve problem $A$.  A reduction is an algorithm and therefore can be specified by its resources.  A reduction might be computable computable $\leq$, polynomial time $\leq_p$, randomized $\leq_r$, or quantum $\leq_q$.  Reductions can be used for both algorithms and for hardness.  
 
