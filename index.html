@@ -275,7 +275,7 @@ title: Algorithms for lattice problems in NP \(\cap\) CoNP
 
 
 
-<div id="orge59a1ef" class="figure">
+<div id="org0ad917a" class="figure">
 <p><img src="assets/img/xyz.svg" alt="xyz.svg" class="org-svg" align="right" style="width: 40%" />
 </p>
 </div>
@@ -293,7 +293,7 @@ Here is a picture from <a href="https://arxiv.org/2201.13450">arxiv.org/abs/2201
 </p>
 
 
-<div id="org6fd0141" class="figure">
+<div id="org1665e44" class="figure">
 <p><img src="assets/img/pic-ranges.jpg" alt="pic-ranges.jpg" width="75%" style="margin-left: auto; margin-right: auto;" />
 </p>
 </div>
@@ -306,11 +306,11 @@ The right three regions represent NP intersect CoNP, but most work has focused o
 To participate send email to {{ site.email }}.  Suggestions about all topics related to this site are welcome.  This includes technical information, how to organize topics, how to visualize what is known, anything at all.  Help can be public, private, or anoymous.  
 </p>
 
-<div id="outline-container-org90ca142" class="outline-2">
-<h2 id="org90ca142"><span class="section-number-2">1.</span> Upcoming topics</h2>
+<div id="outline-container-org3ce6b62" class="outline-2">
+<h2 id="org3ce6b62"><span class="section-number-2">1.</span> Upcoming topics</h2>
 <div class="outline-text-2" id="text-1">
 <ol class="org-ol">
-<li>What is NP$&cap;$CoNP and why is it relevant here?</li>
+<li>What is NP intersect CoNP (i.e., NP \(\cap\) CoNP) and why is it relevant here?</li>
 <li>What does it take to establish a belief that no efficient algorithm exists for a computational problem?  It's not easy.  For example, who has worked on it?  For how long?  How much expertise is necessary, and who has it?  What kind of incentive is there to work on it?  Are people actively discouraged from working on it for various reasons?  What are the answers to these questions for factoring and LWE?</li>
 <li>Does the worst-to-average case reduction from lattice problems to LWE have a complexity flavor, or is it more like discrete log?</li>
 <li>What is the right parameter set to use for measuring progress in lattice algorithms?  The dimension has long been the focus but with progress stuck for so long is that a good idea?</li>
@@ -318,8 +318,8 @@ To participate send email to {{ site.email }}.  Suggestions about all topics rel
 </div>
 </div>
 
-<div id="outline-container-orgab494cb" class="outline-2">
-<h2 id="orgab494cb"><span class="section-number-2">2.</span> Questions</h2>
+<div id="outline-container-orgc6bd26f" class="outline-2">
+<h2 id="orgc6bd26f"><span class="section-number-2">2.</span> Questions</h2>
 <div class="outline-text-2" id="text-2">
 <ol class="org-ol">
 <li>Why does <a href="https://latticechallenge.org">latticechallenge.org</a> only have \(q\) = prime and not the power-of-two case?  What about \(q=n^2\)?</li>
@@ -328,8 +328,8 @@ To participate send email to {{ site.email }}.  Suggestions about all topics rel
 </div>
 </div>
 
-<div id="outline-container-org5b6b63b" class="outline-2">
-<h2 id="org5b6b63b"><span class="section-number-2">3.</span> Open Problems</h2>
+<div id="outline-container-orgac4f0d2" class="outline-2">
+<h2 id="orgac4f0d2"><span class="section-number-2">3.</span> Open Problems</h2>
 <div class="outline-text-2" id="text-3">
 <ol class="org-ol">
 <li>The driving question, way off in the distance: does a polynomial-time algorithm exist for solving any lattice problems with polynomial approximation factor?</li>
@@ -339,8 +339,8 @@ To participate send email to {{ site.email }}.  Suggestions about all topics rel
 </div>
 </div>
 
-<div id="outline-container-org2cbbca2" class="outline-2">
-<h2 id="org2cbbca2"><span class="section-number-2">4.</span> Links to lattice-based cryptography</h2>
+<div id="outline-container-org37d7e07" class="outline-2">
+<h2 id="org37d7e07"><span class="section-number-2">4.</span> Links to lattice-based cryptography</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 A lot of amazing tools have been developed in lattice-based cryptography over the last couple of decades.  Perhaps they can help with algorithms for lattice problems in NP \(\cap\) CoNP also.  There will be some translation necessary.
@@ -348,8 +348,8 @@ A lot of amazing tools have been developed in lattice-based cryptography over th
 </div>
 </div>
 
-<div id="outline-container-org6d4d1aa" class="outline-2">
-<h2 id="org6d4d1aa"><span class="section-number-2">5.</span> Reductions are the tool to compare the relative computational difficulty of problems</h2>
+<div id="outline-container-orgacbbd5f" class="outline-2">
+<h2 id="orgacbbd5f"><span class="section-number-2">5.</span> Reductions are the tool to compare the relative computational difficulty of problems</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 In computer science there are not good tools to prove that efficient algorithms don't exist to solve a problem.  Most problem in NP either have a polynomial-time algorithm or they can be shown to be NP-complete.  NP-complete are not generally believed to have efficient classical or quantum algorithms, but they are not the topic of this site.  Here the focus in on problems that are in NP$&cap;$CoNP.  This includes the class of polynomial-time solvable problems.
@@ -365,8 +365,8 @@ A problem \(A\) reduces to a problem \(B\), written \(A \leq B\), if an algorith
 </ul>
 </div>
 
-<div id="outline-container-org5fe1b08" class="outline-3">
-<h3 id="org5fe1b08"><span class="section-number-3">5.1.</span> Simple examples using polynomial-time reductions and algorithms but avoiding necessary technicality:</h3>
+<div id="outline-container-org44bdcc8" class="outline-3">
+<h3 id="org44bdcc8"><span class="section-number-3">5.1.</span> Simple examples using polynomial-time reductions and algorithms but avoiding necessary technicality:</h3>
 <div class="outline-text-3" id="text-5-1">
 <ol class="org-ol">
 <li>Break RSA mod \(N\) \(\leq\) factor \(N\).
@@ -380,12 +380,12 @@ Therefore, if there is no quantum algorithm for SVP, then there is no quantum al
 </div>
 
 
-<div id="outline-container-org368256e" class="outline-2">
-<h2 id="org368256e"><span class="section-number-2">6.</span> BDD is not  LWE</h2>
+<div id="outline-container-org9432320" class="outline-2">
+<h2 id="org9432320"><span class="section-number-2">6.</span> BDD is not  LWE</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-org0867132" class="outline-3">
-<h3 id="org0867132"><span class="section-number-3">6.1.</span> Bounded Distance Decoding (BDD) and Learning With Errors (LWE) are not the same problem.  They are related in important ways, but they are also different in important ways.</h3>
+<div id="outline-container-org85b7b08" class="outline-3">
+<h3 id="org85b7b08"><span class="section-number-3">6.1.</span> Bounded Distance Decoding (BDD) and Learning With Errors (LWE) are not the same problem.  They are related in important ways, but they are also different in important ways.</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 One might say that BDD \(\leq_q\) LWE \(\leq\) BDD to have a high-level understanding of the relationship, but what's missing in that statement are the parameters that give the relationships necessary meaning.
@@ -398,23 +398,23 @@ One might say that BDD \(\leq_q\) LWE \(\leq\) BDD to have a high-level understa
 </ol>
 </div>
 
-<div id="outline-container-org0778e7d" class="outline-4">
-<h4 id="org0778e7d"><span class="section-number-4">6.1.1.</span> Technical references:</h4>
+<div id="outline-container-org28a9b3e" class="outline-4">
+<h4 id="org28a9b3e"><span class="section-number-4">6.1.1.</span> Technical references:</h4>
 <div class="outline-text-4" id="text-6-1-1">
 </div>
 <ol class="org-ol">
-<li><a id="orgfdfeba5"></a>[Reg05]: BDD \(\leq_q\) LWE<br /></li>
-<li><a id="org0f4762d"></a>[Pei09]: BDD \(\leq\) LWE<br /></li>
-<li><a id="org5e02fe0"></a>[LM09]: BDD \(\leq\) SVP<br /></li>
-<li><a id="org65b4e7a"></a>[BLPRS13]: ?<br /></li>
-<li><a id="orga69a37e"></a>[EH21/EEH22]: BDD \(\leq_q\) LWE.<br /></li>
+<li><a id="orgbb9ee42"></a>[Reg05]: BDD \(\leq_q\) LWE<br /></li>
+<li><a id="org1aa7760"></a>[Pei09]: BDD \(\leq\) LWE<br /></li>
+<li><a id="org9369749"></a>[LM09]: BDD \(\leq\) SVP<br /></li>
+<li><a id="org5ad588d"></a>[BLPRS13]: ?<br /></li>
+<li><a id="org7d28c95"></a>[EH21/EEH22]: BDD \(\leq_q\) LWE.<br /></li>
 </ol>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org8d451d4" class="outline-2">
-<h2 id="org8d451d4"><span class="section-number-2">7.</span> Ideas that might or might not work</h2>
+<div id="outline-container-org6b1d0b2" class="outline-2">
+<h2 id="org6b1d0b2"><span class="section-number-2">7.</span> Ideas that might or might not work</h2>
 <div class="outline-text-2" id="text-7">
 <ol class="org-ol">
 <li>Amplitude amplification on a state containing shapes around each lattice point.</li>
@@ -423,12 +423,12 @@ One might say that BDD \(\leq_q\) LWE \(\leq\) BDD to have a high-level understa
 </div>
 </div>
 
-<div id="outline-container-org3697f5f" class="outline-2">
-<h2 id="org3697f5f"><span class="section-number-2">8.</span> Road blocks</h2>
+<div id="outline-container-orgcf2e80b" class="outline-2">
+<h2 id="orgcf2e80b"><span class="section-number-2">8.</span> Road blocks</h2>
 <div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-org31972e5" class="outline-3">
-<h3 id="org31972e5"><span class="section-number-3">8.1.</span> Cannot do the following</h3>
+<div id="outline-container-org70802ec" class="outline-3">
+<h3 id="org70802ec"><span class="section-number-3">8.1.</span> Cannot do the following</h3>
 <div class="outline-text-3" id="text-8-1">
 <ol class="org-ol">
 <li>Using FHE, given \(\matA, \matA\vs+\ve\), compute \(\matA', \matA'(q/2)\vs+\ve'\).</li>
@@ -436,7 +436,7 @@ One might say that BDD \(\leq_q\) LWE \(\leq\) BDD to have a high-level understa
 </div>
 </div>
 
-<div id="outline-container-org9f159a6" class="outline-3">
-<h3 id="org9f159a6"><span class="section-number-3">8.2.</span> Besides not finding an algorithm yet, are there other ways to describe why the various problems might or might not have an efficient algorithm?</h3>
+<div id="outline-container-orgacbee32" class="outline-3">
+<h3 id="orgacbee32"><span class="section-number-3">8.2.</span> Besides not finding an algorithm yet, are there other ways to describe why the various problems might or might not have an efficient algorithm?</h3>
 </div>
 </div>

@@ -339,7 +339,7 @@ To participate send email to {{ site.email }}.  Suggestions about all topics rel
 
 * Upcoming topics
 
-1. What is NP$\cap$CoNP and why is it relevant here?
+1. What is NP intersect CoNP (i.e., NP $\cap$ CoNP) and why is it relevant here?
 2. What does it take to establish a belief that no efficient algorithm exists for a computational problem?  It's not easy.  For example, who has worked on it?  For how long?  How much expertise is necessary, and who has it?  What kind of incentive is there to work on it?  Are people actively discouraged from working on it for various reasons?  What are the answers to these questions for factoring and LWE?
 3. Does the worst-to-average case reduction from lattice problems to LWE have a complexity flavor, or is it more like discrete log?
 4. What is the right parameter set to use for measuring progress in lattice algorithms?  The dimension has long been the focus but with progress stuck for so long is that a good idea?
