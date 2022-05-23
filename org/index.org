@@ -409,6 +409,9 @@ The input to $\GapSVL$ and $\BDD$ includes a lattice $L$ of dimension $n$.
 | $\BDD$                                         |
 | $\Bigg\uparrow  \quad i.e., \GapSVL \leq \BDD$ |
 | $\GapSVL$                                      |
+#+ATTR_HTML: :style width: 20% :align left
+[[file:assets/img/pillar.svg]] 
+
 Notes:
 1. $\GapSVL$ is known as $\GapSVP$ in the literature.  Here the name is changed for two reasons.  First is that it has a mnemonic meaning: the Shortest Vector Length.  Second, when referring to the problem as $\GapSVP$, it is easy to miss the fact that $\LWE$ is based on computing the length, which may be much easier than computing a vector.
 2. $\BDD \leq \LWE_{2^{3n}}$ is a special case in [Reg09].  It is used as a black box in [Pei09].
