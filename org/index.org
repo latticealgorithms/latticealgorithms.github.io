@@ -371,7 +371,7 @@ A lot of amazing tools have been developed in lattice-based cryptography over th
 
 In computer science there are not good tools to prove that efficient algorithms don't exist to solve a problem.  Most problem in NP either have a polynomial-time algorithm or they can be shown to be NP-complete.  NP-complete are not generally believed to have efficient classical or quantum algorithms, but they are not the topic of this site.  Here the focus in on problems that are in NP$\cap$CoNP.  This includes the class of polynomial-time solvable problems.
 
-A problem $A$ reduces to a problem $B$, written $A \leq B$, if an algorithm for $B$ can be used to solve problem $A$.  A reduction is an algorithm and therefore can be specified by its resources.  A reduction might be computable computable $\leq_c$, polynomial time $\leq$, randomized $\leq_r$, or quantum $\leq_q$.  Reductions can be used for both algorithms and for hardness.  Here $\leq$ with no subscript will denote polynomial-time because it will be used the most.
+A problem $A$ reduces to a problem $B$, written $A \leq B$, if an algorithm for $B$ can be used to solve problem $A$.  A reduction is an algorithm and therefore can be specified by its resources.  A reduction might be computable computable $\leq_c$, polynomial time $\leq$, randomized $\leq_r$, or quantum $\leq_Q$.  Reductions can be used for both algorithms and for hardness.  Here $\leq$ with no subscript will denote polynomial-time because it will be used the most.
 
  - If $A \leq B$ and there is a polynomial-time algorithm for $B$, then there is a polynomial-time algorithm for $A$ because polynomials compose.
  - If $A \leq B$ and there is no polynomial-time algorithm for $A$, then there is no polynomial-time algorithm for $B$.
@@ -379,7 +379,7 @@ A problem $A$ reduces to a problem $B$, written $A \leq B$, if an algorithm for 
 ** Simple examples using polynomial-time reductions and algorithms but avoiding necessary technicality:
 1. Break RSA mod $N$ $\leq$ factor $N$.
    Therefore, if there is an algorithm for factoring then there is an algorithm to break RSA.
-2. Solve SVP $\leq_q$ break LWE.
+2. Solve SVP $\leq_Q$ break LWE.
    Therefore, if there is no quantum algorithm for SVP, then there is no quantum algorithm for breaking LWE.
 3. $\BDD \leq \SVP$ when the approximation factor is something.
 
@@ -387,23 +387,23 @@ A problem $A$ reduces to a problem $B$, written $A \leq B$, if an algorithm for 
 * $\BDD$ is not $\LWE$
 ** Bounded Distance Decoding ($\BDD$) and Learning With Errors ($\LWE$) are not the same problem.  They are related in important ways, but they are also different in important ways.
 
-One might say that $\BDD \leq_q \LWE \leq \BDD$ to have a high-level understanding of the relationship, but what's missing in that statement are the parameters that give the relationships necessary meaning.
+One might say that $\BDD \leq_Q \LWE \leq \BDD$ to have a high-level understanding of the relationship, but what's missing in that statement are the parameters that give the relationships necessary meaning.
 
-1. The theoretical connection $\BDD \leq_q \LWE$ is used to conclude that an algorithm for $\LWE$ can be used to construct a quantum algorithm for $\BDD$.  No quantum algorithm is known for $\BDD$ yet, so 
+1. The theoretical connection $\BDD \leq_Q \LWE$ is used to conclude that an algorithm for $\LWE$ can be used to construct a quantum algorithm for $\BDD$.  No quantum algorithm is known for $\BDD$ yet, so 
 
 2. Concrete security involves choosing key sizes for implementations.  This uses the more the direct $\LWE$ $\leq$ $\BDD$ reduction, similar to Break RSA $\leq$ Factoring.  In this case a $\BDD$ algorithm of the right parameters can be used to solve LWE, because after an $\LWE$ instance is chosen and fixed, it is then a $\BDD$ instance.  Running $\BDD$ algorithms on those instances is used to understand how well algorithms perform on LWE.
 
 *** Technical references:
-**** [Reg05]: $\BDD \leq_q \LWE$
+**** [Reg05]: $\BDD \leq_Q \LWE$
 **** [Pei09]: $\BDD \leq \LWE$
 **** [LM09]: $\BDD \leq \SVP$
 **** [BLPRS13]: ?
-**** [EH21/EEH22]: $\BDD \leq_q \LWE$.
+**** [EH21/EEH22]: $\BDD \leq_Q \LWE$.
 
 * The classical theoretical basis for LWE
 Let $q(n) = 2^{3n}$.
 
-The input to $\GapSVL$ or $\BDD$ is a lattice $L$ of dimension $n$.
+The input to $\GapSVL$ and $\BDD$ includes a lattice $L$ of dimension $n$.
 | $\LWE_{q(n)}$                                  |
 | $\Big\uparrow$                                 |
 | $\BDD$                                         |
