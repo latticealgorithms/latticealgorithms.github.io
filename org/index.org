@@ -265,15 +265,15 @@ title: Algorithms for lattice problems in NP \(\cap\) CoNP
 \newcommand{\vg}{\mathbf{g}}
 \newcommand{\matA}{\mathbf A}
 \newcommand{\matAt}{\tilde{\mathbf A}}
-\newcommand{\matB}{{\mathbf B}} 
+\newcommand{\matB}{\mathbf B}
 \newcommand{\matC}{\{\mathbf C}\} 
 \newcommand{\matG}{\{\mathbf G}\} 
 \newcommand{\matI}{\{\mathbf I}\} 
 \newcommand{\matM}{\{\mathbf M}\} 
 \newcommand{\matR}{\{\mathbf R}\} 
-\newcommand{\calP}{{\mathcal P}} 
-\newcommand{\vol}{{\operatorname{vol}}} 
-\newcommand{\GapSVP}{{\operatorname{GapSVP}}} 
+\newcommand{\calP}{\mathcal P} 
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\GapSVP}{\operatorname{GapSVP}}
 \newcommand{\BitDecomp}{\operatorname{BitDecomp}}
 \newcommand{\Flatten}{\operatorname{Flatten}}
 \newcommand{\Powersoftwo}{\operatorname{Powersof2}}
@@ -408,9 +408,9 @@ One might say that BDD $\leq_q$ LWE $\leq$ BDD to have a high-level understandin
 
 * Some lattice facts to organize
 ** $\forall$ bases $\matB$ of $L$, $\minGS \leq \lambda_1(L)$.
-** $\forall$ basis $\matB$ of $L$, $\det(L) := \vol(\calP(\matB)) = \prod_i \|\vb_i\|$.
+** $\forall$ basis $\matB$ of $L$, $\det(L) := \vol(\calP(\matB)) = \prod_i \|\vb_i^*\|$.
 ** $\forall$ bases $\matB$ of $L$, $\det(L) \leq \prod_i \|\vb_i\|$.
-** $\forall$ bases $\matB$ of $L$, $\det(L) = \sqrt{\det(\matB^t\matB)}$, and for the full-rank case, $\det(L) = |\det(\matB)|$.
+** $\forall$ bases $\matB$ of $L$, $\det(L) = \sqrt{\det(\matB^t\matB)}$, and for the full-rank case, $\det(L) = |\!\det(\matB)|$.
 ** Define \(\gamma\)-SVP for a number $\gamma$, but $\gamma$ is usually a monotonically increasing function of $n$.
-** $\GapSVP_\gamma$ given $(\matB,d)$
+** $\GapSVP_\gamma$ given $(\matB,d)$...
 
