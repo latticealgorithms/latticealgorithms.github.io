@@ -273,7 +273,11 @@ title: Algorithms for lattice problems in NP \(\cap\) CoNP
 \newcommand{\matR}{\{\mathbf R}\} 
 \newcommand{\calP}{\mathcal P} 
 \newcommand{\vol}{\operatorname{vol}}
+\newcommand{\LWE}{\operatorname{LWE}}
+\newcommand{\BDD}{\operatorname{BDD}}
+\newcommand{\SVP}{\operatorname{SVP}}
 \newcommand{\GapSVP}{\operatorname{GapSVP}}
+\newcommand{\GapSVL}{\operatorname{GapSVL}}
 \newcommand{\BitDecomp}{\operatorname{BitDecomp}}
 \newcommand{\Flatten}{\operatorname{Flatten}}
 \newcommand{\Powersoftwo}{\operatorname{Powersof2}}
@@ -377,24 +381,38 @@ A problem $A$ reduces to a problem $B$, written $A \leq B$, if an algorithm for 
    Therefore, if there is an algorithm for factoring then there is an algorithm to break RSA.
 2. Solve SVP $\leq_q$ break LWE.
    Therefore, if there is no quantum algorithm for SVP, then there is no quantum algorithm for breaking LWE.
-3. BDD $\leq$ SVP when the approximation factor is something.
+3. $\BDD \leq \SVP$ when the approximation factor is something.
 
 
-* BDD is not  LWE
-** Bounded Distance Decoding (BDD) and Learning With Errors (LWE) are not the same problem.  They are related in important ways, but they are also different in important ways.
+* $\BDD$ is not $\LWE$
+** Bounded Distance Decoding ($\BDD$) and Learning With Errors ($\LWE$) are not the same problem.  They are related in important ways, but they are also different in important ways.
 
-One might say that BDD $\leq_q$ LWE $\leq$ BDD to have a high-level understanding of the relationship, but what's missing in that statement are the parameters that give the relationships necessary meaning.
+One might say that $\BDD \leq_q \LWE \leq \BDD$ to have a high-level understanding of the relationship, but what's missing in that statement are the parameters that give the relationships necessary meaning.
 
-1. The theoretical connection BDD $\leq_q$ LWE is used to conclude that an algorithm for LWE can be used to construct a quantum algorithm for BDD.  No quantum algorithm is known for BDD yet, so 
+1. The theoretical connection $\BDD \leq_q \LWE$ is used to conclude that an algorithm for $\LWE$ can be used to construct a quantum algorithm for $\BDD$.  No quantum algorithm is known for $\BDD$ yet, so 
 
-2. Concrete security involves choosing key sizes for implementations.  This uses the more the direct LWE $\leq$ BDD reduction, similar to Break RSA $\leq$ Factoring.  In this case a BDD algorithm of the right parameters can be used to solve LWE, because after an LWE instance is chosen and fixed, it is then a BDD instance.  Running BDD algorithms on those instances is used to understand how well algorithms perform on LWE.
+2. Concrete security involves choosing key sizes for implementations.  This uses the more the direct $\LWE$ $\leq$ $\BDD$ reduction, similar to Break RSA $\leq$ Factoring.  In this case a $\BDD$ algorithm of the right parameters can be used to solve LWE, because after an $\LWE$ instance is chosen and fixed, it is then a $\BDD$ instance.  Running $\BDD$ algorithms on those instances is used to understand how well algorithms perform on LWE.
 
 *** Technical references:
-**** [Reg05]: BDD $\leq_q$ LWE
-**** [Pei09]: BDD $\leq$ LWE
-**** [LM09]: BDD $\leq$ SVP
+**** [Reg05]: $\BDD \leq_q \LWE$
+**** [Pei09]: $\BDD \leq \LWE$
+**** [LM09]: $\BDD \leq \SVP$
 **** [BLPRS13]: ?
-**** [EH21/EEH22]: BDD $\leq_q$ LWE.
+**** [EH21/EEH22]: $\BDD \leq_q \LWE$.
+
+* The classical theoretical basis for LWE
+Let $q(n) = 2^{3n}$.
+
+The input to $\GapSVL$ or $\BDD$ is a lattice $L$ of dimension $n$.
+| $\LWE_{q(n)}$                                  |
+| $\Big\uparrow$                                 |
+| $\BDD$                                         |
+| $\Bigg\uparrow  \quad i.e., \GapSVL \leq \BDD$ |
+| $\GapSVL$                                      |
+Notes:
+1. $\GapSVL$ is known as $\GapSVP$ in the literature.  Here the name is changed for two reasons.  First is that it has a mnemonic meaning: the Shortest Vector Length.  Second, when referring to the problem as $\GapSVP$, it is easy to miss the fact that $\LWE$ is based on computing the length, which may be much easier than computing a vector.
+2. $\BDD \leq \LWE_{2^{3n}}$ is a special case in [Reg09].  It is used as a black box in [Pei09].
+3. $\GapSVL \leq \BDD$ is from [Pei09].
 
 * Ideas that might or might not work
 1. Amplitude amplification on a state containing shapes around each lattice point.
@@ -412,5 +430,5 @@ One might say that BDD $\leq_q$ LWE $\leq$ BDD to have a high-level understandin
 ** $\forall$ bases $\matB$ of $L$, $\det(L) \leq \prod_i \|\vb_i\|$.
 ** $\forall$ bases $\matB$ of $L$, $\det(L) = \sqrt{\det(\matB^t\matB)}$, and for the full-rank case, $\det(L) = |\!\det(\matB)|$.
 ** Define \(\gamma\)-SVP for a number $\gamma$, but $\gamma$ is usually a monotonically increasing function of $n$.
-** $\GapSVP_\gamma$ given $(\matB,d)$...
+** $\GapSVP_\gamma$ given $(\matB,d)$....
 

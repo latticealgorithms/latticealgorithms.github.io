@@ -265,7 +265,11 @@ title: Algorithms for lattice problems in NP \(\cap\) CoNP
 \newcommand{\matR}{\{\mathbf R}\} 
 \newcommand{\calP}{\mathcal P} 
 \newcommand{\vol}{\operatorname{vol}}
+\newcommand{\LWE}{\operatorname{LWE}}
+\newcommand{\BDD}{\operatorname{BDD}}
+\newcommand{\SVP}{\operatorname{SVP}}
 \newcommand{\GapSVP}{\operatorname{GapSVP}}
+\newcommand{\GapSVL}{\operatorname{GapSVL}}
 \newcommand{\BitDecomp}{\operatorname{BitDecomp}}
 \newcommand{\Flatten}{\operatorname{Flatten}}
 \newcommand{\Powersoftwo}{\operatorname{Powersof2}}
@@ -279,7 +283,7 @@ title: Algorithms for lattice problems in NP \(\cap\) CoNP
 
 
 
-<div id="org7f5273a" class="figure">
+<div id="org903c9f6" class="figure">
 <p><img src="assets/img/xyz.svg" alt="xyz.svg" class="org-svg" align="right" style="width: 40%" />
 </p>
 </div>
@@ -297,7 +301,7 @@ Here is a picture from <a href="https://arxiv.org/2201.13450">arxiv.org/abs/2201
 </p>
 
 
-<div id="orgfa4dfba" class="figure">
+<div id="orgf0b04dd" class="figure">
 <p><img src="assets/img/pic-ranges.jpg" alt="pic-ranges.jpg" width="75%" style="margin-left: auto; margin-right: auto;" />
 </p>
 </div>
@@ -310,8 +314,8 @@ The right three regions represent NP intersect CoNP, but most work has focused o
 To participate send email to {{ site.email }}.  Suggestions about all topics related to this site are welcome.  This includes technical information, how to organize topics, how to visualize what is known, anything at all.  Help can be public, private, or anoymous.  
 </p>
 
-<div id="outline-container-org11b9052" class="outline-2">
-<h2 id="org11b9052"><span class="section-number-2">1.</span> Upcoming topics</h2>
+<div id="outline-container-orge0330cd" class="outline-2">
+<h2 id="orge0330cd"><span class="section-number-2">1.</span> Upcoming topics</h2>
 <div class="outline-text-2" id="text-1">
 <ol class="org-ol">
 <li>What is NP intersect CoNP (i.e., NP \(\cap\) CoNP) and why is it relevant here?</li>
@@ -322,8 +326,8 @@ To participate send email to {{ site.email }}.  Suggestions about all topics rel
 </div>
 </div>
 
-<div id="outline-container-orgcd55162" class="outline-2">
-<h2 id="orgcd55162"><span class="section-number-2">2.</span> Questions</h2>
+<div id="outline-container-org3fc4bf9" class="outline-2">
+<h2 id="org3fc4bf9"><span class="section-number-2">2.</span> Questions</h2>
 <div class="outline-text-2" id="text-2">
 <ol class="org-ol">
 <li>Why does <a href="https://latticechallenge.org">latticechallenge.org</a> only have \(q\) = prime and not the power-of-two case?  What about \(q=n^2\)?</li>
@@ -332,8 +336,8 @@ To participate send email to {{ site.email }}.  Suggestions about all topics rel
 </div>
 </div>
 
-<div id="outline-container-org9d445ad" class="outline-2">
-<h2 id="org9d445ad"><span class="section-number-2">3.</span> Open Problems</h2>
+<div id="outline-container-org49e3755" class="outline-2">
+<h2 id="org49e3755"><span class="section-number-2">3.</span> Open Problems</h2>
 <div class="outline-text-2" id="text-3">
 <ol class="org-ol">
 <li>The driving question, way off in the distance: does a polynomial-time algorithm exist for solving any lattice problems with polynomial approximation factor?</li>
@@ -343,8 +347,8 @@ To participate send email to {{ site.email }}.  Suggestions about all topics rel
 </div>
 </div>
 
-<div id="outline-container-org9913f57" class="outline-2">
-<h2 id="org9913f57"><span class="section-number-2">4.</span> Links to lattice-based cryptography</h2>
+<div id="outline-container-org2c4eed7" class="outline-2">
+<h2 id="org2c4eed7"><span class="section-number-2">4.</span> Links to lattice-based cryptography</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 A lot of amazing tools have been developed in lattice-based cryptography over the last couple of decades.  Perhaps they can help with algorithms for lattice problems in NP \(\cap\) CoNP also.  There will be some translation necessary.
@@ -352,8 +356,8 @@ A lot of amazing tools have been developed in lattice-based cryptography over th
 </div>
 </div>
 
-<div id="outline-container-org55b4ea6" class="outline-2">
-<h2 id="org55b4ea6"><span class="section-number-2">5.</span> Reductions are the tool to compare the relative computational difficulty of problems</h2>
+<div id="outline-container-org110d9c5" class="outline-2">
+<h2 id="org110d9c5"><span class="section-number-2">5.</span> Reductions are the tool to compare the relative computational difficulty of problems</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 In computer science there are not good tools to prove that efficient algorithms don't exist to solve a problem.  Most problem in NP either have a polynomial-time algorithm or they can be shown to be NP-complete.  NP-complete are not generally believed to have efficient classical or quantum algorithms, but they are not the topic of this site.  Here the focus in on problems that are in NP$&cap;$CoNP.  This includes the class of polynomial-time solvable problems.
@@ -369,57 +373,106 @@ A problem \(A\) reduces to a problem \(B\), written \(A \leq B\), if an algorith
 </ul>
 </div>
 
-<div id="outline-container-org2da0cdd" class="outline-3">
-<h3 id="org2da0cdd"><span class="section-number-3">5.1.</span> Simple examples using polynomial-time reductions and algorithms but avoiding necessary technicality:</h3>
+<div id="outline-container-org395d8d6" class="outline-3">
+<h3 id="org395d8d6"><span class="section-number-3">5.1.</span> Simple examples using polynomial-time reductions and algorithms but avoiding necessary technicality:</h3>
 <div class="outline-text-3" id="text-5-1">
 <ol class="org-ol">
 <li>Break RSA mod \(N\) \(\leq\) factor \(N\).
 Therefore, if there is an algorithm for factoring then there is an algorithm to break RSA.</li>
 <li>Solve SVP \(\leq_q\) break LWE.
 Therefore, if there is no quantum algorithm for SVP, then there is no quantum algorithm for breaking LWE.</li>
-<li>BDD \(\leq\) SVP when the approximation factor is something.</li>
+<li>\(\BDD \leq \SVP\) when the approximation factor is something.</li>
 </ol>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-org85b5834" class="outline-2">
-<h2 id="org85b5834"><span class="section-number-2">6.</span> BDD is not  LWE</h2>
+<div id="outline-container-orgbf7aad4" class="outline-2">
+<h2 id="orgbf7aad4"><span class="section-number-2">6.</span> \(\BDD\) is not \(\LWE\)</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-orgc2f5d44" class="outline-3">
-<h3 id="orgc2f5d44"><span class="section-number-3">6.1.</span> Bounded Distance Decoding (BDD) and Learning With Errors (LWE) are not the same problem.  They are related in important ways, but they are also different in important ways.</h3>
+<div id="outline-container-org07c8ef8" class="outline-3">
+<h3 id="org07c8ef8"><span class="section-number-3">6.1.</span> Bounded Distance Decoding (\(\BDD\)) and Learning With Errors (\(\LWE\)) are not the same problem.  They are related in important ways, but they are also different in important ways.</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
-One might say that BDD \(\leq_q\) LWE \(\leq\) BDD to have a high-level understanding of the relationship, but what's missing in that statement are the parameters that give the relationships necessary meaning.
+One might say that \(\BDD \leq_q \LWE \leq \BDD\) to have a high-level understanding of the relationship, but what's missing in that statement are the parameters that give the relationships necessary meaning.
 </p>
 
 <ol class="org-ol">
-<li>The theoretical connection BDD \(\leq_q\) LWE is used to conclude that an algorithm for LWE can be used to construct a quantum algorithm for BDD.  No quantum algorithm is known for BDD yet, so</li>
+<li>The theoretical connection \(\BDD \leq_q \LWE\) is used to conclude that an algorithm for \(\LWE\) can be used to construct a quantum algorithm for \(\BDD\).  No quantum algorithm is known for \(\BDD\) yet, so</li>
 
-<li>Concrete security involves choosing key sizes for implementations.  This uses the more the direct LWE \(\leq\) BDD reduction, similar to Break RSA \(\leq\) Factoring.  In this case a BDD algorithm of the right parameters can be used to solve LWE, because after an LWE instance is chosen and fixed, it is then a BDD instance.  Running BDD algorithms on those instances is used to understand how well algorithms perform on LWE.</li>
+<li>Concrete security involves choosing key sizes for implementations.  This uses the more the direct \(\LWE\) \(\leq\) \(\BDD\) reduction, similar to Break RSA \(\leq\) Factoring.  In this case a \(\BDD\) algorithm of the right parameters can be used to solve LWE, because after an \(\LWE\) instance is chosen and fixed, it is then a \(\BDD\) instance.  Running \(\BDD\) algorithms on those instances is used to understand how well algorithms perform on LWE.</li>
 </ol>
 </div>
 
-<div id="outline-container-org29e05ca" class="outline-4">
-<h4 id="org29e05ca"><span class="section-number-4">6.1.1.</span> Technical references:</h4>
+<div id="outline-container-org800a7f2" class="outline-4">
+<h4 id="org800a7f2"><span class="section-number-4">6.1.1.</span> Technical references:</h4>
 <div class="outline-text-4" id="text-6-1-1">
 </div>
 <ol class="org-ol">
-<li><a id="orga417b73"></a>[Reg05]: BDD \(\leq_q\) LWE<br /></li>
-<li><a id="org364d0be"></a>[Pei09]: BDD \(\leq\) LWE<br /></li>
-<li><a id="orgc6e15ee"></a>[LM09]: BDD \(\leq\) SVP<br /></li>
-<li><a id="org3643532"></a>[BLPRS13]: ?<br /></li>
-<li><a id="org7bec68f"></a>[EH21/EEH22]: BDD \(\leq_q\) LWE.<br /></li>
+<li><a id="org0c4be8e"></a>[Reg05]: \(\BDD \leq_q \LWE\)<br /></li>
+<li><a id="org77b7668"></a>[Pei09]: \(\BDD \leq \LWE\)<br /></li>
+<li><a id="org22e96e3"></a>[LM09]: \(\BDD \leq \SVP\)<br /></li>
+<li><a id="org205bf76"></a>[BLPRS13]: ?<br /></li>
+<li><a id="orge311c9b"></a>[EH21/EEH22]: \(\BDD \leq_q \LWE\).<br /></li>
 </ol>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org9966cca" class="outline-2">
-<h2 id="org9966cca"><span class="section-number-2">7.</span> Ideas that might or might not work</h2>
+<div id="outline-container-orgcc8a385" class="outline-2">
+<h2 id="orgcc8a385"><span class="section-number-2">7.</span> The classical theoretical basis for LWE</h2>
 <div class="outline-text-2" id="text-7">
+<p>
+Let \(q(n) = 2^{3n}\).
+</p>
+
+<p>
+The input to \(\GapSVL\) or \(\BDD\) is a lattice \(L\) of dimension \(n\).
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">\(\LWE_{q(n)}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">\(\Big\uparrow\)</td>
+</tr>
+
+<tr>
+<td class="org-left">\(\BDD\)</td>
+</tr>
+
+<tr>
+<td class="org-left">\(\Bigg\uparrow  \quad i.e., \GapSVL \leq \BDD\)</td>
+</tr>
+
+<tr>
+<td class="org-left">\(\GapSVL\)</td>
+</tr>
+</tbody>
+</table>
+<p>
+Notes:
+</p>
+<ol class="org-ol">
+<li>\(\GapSVL\) is known as \(\GapSVP\) in the literature.  Here the name is changed for two reasons.  First is that it has a mnemonic meaning: the Shortest Vector Length.  Second, when referring to the problem as \(\GapSVP\), it is easy to miss the fact that \(\LWE\) is based on computing the length, which may be much easier than computing a vector.</li>
+<li>\(\BDD \leq \LWE_{2^{3n}}\) is a special case in [Reg09].  It is used as a black box in [Pei09].</li>
+<li>\(\GapSVL \leq \BDD\) is from [Pei09].</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgf2f5860" class="outline-2">
+<h2 id="orgf2f5860"><span class="section-number-2">8.</span> Ideas that might or might not work</h2>
+<div class="outline-text-2" id="text-8">
 <ol class="org-ol">
 <li>Amplitude amplification on a state containing shapes around each lattice point.</li>
 <li>Partition lattices in various ways to make progress.</li>
@@ -427,44 +480,44 @@ One might say that BDD \(\leq_q\) LWE \(\leq\) BDD to have a high-level understa
 </div>
 </div>
 
-<div id="outline-container-org8e4685c" class="outline-2">
-<h2 id="org8e4685c"><span class="section-number-2">8.</span> Road blocks</h2>
-<div class="outline-text-2" id="text-8">
+<div id="outline-container-org21613f3" class="outline-2">
+<h2 id="org21613f3"><span class="section-number-2">9.</span> Road blocks</h2>
+<div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-org03445df" class="outline-3">
-<h3 id="org03445df"><span class="section-number-3">8.1.</span> Cannot do the following</h3>
-<div class="outline-text-3" id="text-8-1">
+<div id="outline-container-orga99c8e1" class="outline-3">
+<h3 id="orga99c8e1"><span class="section-number-3">9.1.</span> Cannot do the following</h3>
+<div class="outline-text-3" id="text-9-1">
 <ol class="org-ol">
 <li>Using FHE, given \(\matA, \matA\vs+\ve\), compute \(\matA', \matA'(q/2)\vs+\ve'\).</li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-orgc568306" class="outline-3">
-<h3 id="orgc568306"><span class="section-number-3">8.2.</span> Besides not finding an algorithm yet, are there other ways to describe why the various problems might or might not have an efficient algorithm?</h3>
+<div id="outline-container-org2ca6f4b" class="outline-3">
+<h3 id="org2ca6f4b"><span class="section-number-3">9.2.</span> Besides not finding an algorithm yet, are there other ways to describe why the various problems might or might not have an efficient algorithm?</h3>
 </div>
 </div>
 
-<div id="outline-container-org81e8499" class="outline-2">
-<h2 id="org81e8499"><span class="section-number-2">9.</span> Some lattice facts to organize</h2>
-<div class="outline-text-2" id="text-9">
+<div id="outline-container-orgcc2f768" class="outline-2">
+<h2 id="orgcc2f768"><span class="section-number-2">10.</span> Some lattice facts to organize</h2>
+<div class="outline-text-2" id="text-10">
 </div>
-<div id="outline-container-orgc08d3e2" class="outline-3">
-<h3 id="orgc08d3e2"><span class="section-number-3">9.1.</span> \(\forall\) bases \(\matB\) of \(L\), \(\minGS \leq \lambda_1(L)\).</h3>
+<div id="outline-container-org68cb6be" class="outline-3">
+<h3 id="org68cb6be"><span class="section-number-3">10.1.</span> \(\forall\) bases \(\matB\) of \(L\), \(\minGS \leq \lambda_1(L)\).</h3>
 </div>
-<div id="outline-container-org812f797" class="outline-3">
-<h3 id="org812f797"><span class="section-number-3">9.2.</span> \(\forall\) basis \(\matB\) of \(L\), \(\det(L) := \vol(\calP(\matB)) = \prod_i \|\vb_i^*\|\).</h3>
+<div id="outline-container-org5cc777e" class="outline-3">
+<h3 id="org5cc777e"><span class="section-number-3">10.2.</span> \(\forall\) basis \(\matB\) of \(L\), \(\det(L) := \vol(\calP(\matB)) = \prod_i \|\vb_i^*\|\).</h3>
 </div>
-<div id="outline-container-org60e92eb" class="outline-3">
-<h3 id="org60e92eb"><span class="section-number-3">9.3.</span> \(\forall\) bases \(\matB\) of \(L\), \(\det(L) \leq \prod_i \|\vb_i\|\).</h3>
+<div id="outline-container-orgff15638" class="outline-3">
+<h3 id="orgff15638"><span class="section-number-3">10.3.</span> \(\forall\) bases \(\matB\) of \(L\), \(\det(L) \leq \prod_i \|\vb_i\|\).</h3>
 </div>
-<div id="outline-container-orge634581" class="outline-3">
-<h3 id="orge634581"><span class="section-number-3">9.4.</span> \(\forall\) bases \(\matB\) of \(L\), \(\det(L) = \sqrt{\det(\matB^t\matB)}\), and for the full-rank case, \(\det(L) = |\!\det(\matB)|\).</h3>
+<div id="outline-container-org016e7f2" class="outline-3">
+<h3 id="org016e7f2"><span class="section-number-3">10.4.</span> \(\forall\) bases \(\matB\) of \(L\), \(\det(L) = \sqrt{\det(\matB^t\matB)}\), and for the full-rank case, \(\det(L) = |\!\det(\matB)|\).</h3>
 </div>
-<div id="outline-container-org8a90121" class="outline-3">
-<h3 id="org8a90121"><span class="section-number-3">9.5.</span> Define \(\gamma\)-SVP for a number \(\gamma\), but \(\gamma\) is usually a monotonically increasing function of \(n\).</h3>
+<div id="outline-container-org6560178" class="outline-3">
+<h3 id="org6560178"><span class="section-number-3">10.5.</span> Define \(\gamma\)-SVP for a number \(\gamma\), but \(\gamma\) is usually a monotonically increasing function of \(n\).</h3>
 </div>
-<div id="outline-container-org1ff6bf6" class="outline-3">
-<h3 id="org1ff6bf6"><span class="section-number-3">9.6.</span> \(\GapSVP_\gamma\) given \((\matB,d)\)&#x2026;</h3>
+<div id="outline-container-org27658b0" class="outline-3">
+<h3 id="org27658b0"><span class="section-number-3">10.6.</span> \(\GapSVP_\gamma\) given \((\matB,d)\)&#x2026;.</h3>
 </div>
 </div>
