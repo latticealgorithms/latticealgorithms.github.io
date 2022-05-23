@@ -400,7 +400,7 @@ One might say that $\BDD \leq_Q \LWE \leq \BDD$ to have a high-level understandi
 **** [BLPRS13]: ?
 **** [EH21/EEH22]: $\BDD \leq_Q \LWE$.
 
-* The classical theoretical basis for LWE
+* The classical theoretical justification for LWE
 Let $q(n) = 2^{3n}$.
 
 The input to $\GapSVL$ and $\BDD$ includes a lattice $L$ of dimension $n$.
