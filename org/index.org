@@ -252,17 +252,19 @@ title: Algorithms for lattice problems in NP \(\cap\) CoNP
 <div style="display:none">
 \(
 \newcommand{\minGS}{\min_i \|\vb_i^*\|}
+\newcommand{\eps}{\varepsilon}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\Z}{\mathbb{Z}}
-\newcommand{\vv}{\mathbf{v}}
-\newcommand{\ve}{\mathbf{e}}
-\newcommand{\vs}{\mathbf{s}}
-\newcommand{\vt}{\mathbf{t}}
-\newcommand{\vu}{\mathbf{u}}
 \newcommand{\va}{\mathbf{a}}
 \newcommand{\vb}{\mathbf{b}}
 \newcommand{\vc}{\mathbf{c}}
+\newcommand{\ve}{\mathbf{e}}
 \newcommand{\vg}{\mathbf{g}}
+\newcommand{\vs}{\mathbf{s}}
+\newcommand{\vt}{\mathbf{t}}
+\newcommand{\vu}{\mathbf{u}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\vw}{\mathbf{w}}
 \newcommand{\matA}{\mathbf A}
 \newcommand{\matAt}{\tilde{\mathbf A}}
 \newcommand{\matB}{\mathbf B}
@@ -413,7 +415,7 @@ The input to $\GapSVL$ and $\BDD$ includes a lattice $L$ of dimension $n$.
 [[file:assets/img/pillar.svg]] 
 
 Notes:
-1. $\GapSVL$ is known as $\GapSVP$ in the literature.  Here the name is changed for two reasons.  First is that it has a mnemonic meaning: the Shortest Vector Length.  Second, when referring to the problem as $\GapSVP$, it is easy to miss the fact that $\LWE$ is based on computing the length, which may be much easier than computing a vector.
+1. $\GapSVL$ is known as $\GapSVP$ in the literature.  Here the name is changed for two reasons.  First is that it has a mnemonic meaning: the Shortest Vector Length.  Second, when referring to the problem as $\GapSVP$, it is easy to miss the fact that $\LWE$ is based on computing the length of a shortest vector, which may be much easier than computing a shortest vector.
 2. $\BDD \leq \LWE_{2^{3n}}$ is a special case in [Reg09].  It is used as a black box in [Pei09].
 3. $\GapSVL \leq \BDD$ is from [Pei09].
 
@@ -431,11 +433,16 @@ Notes:
 * Some lattice facts to organize
 ** Lattices and their duals
 *** Lattices come in pairs $(L,L^*)$
+1. $1 \leq \lambda_1(L) \cdot \lambda_n(L^*) \leq n$.
+2. $\eta_{\eps(n)}(L) \leq \frac{\sqrt{n}}{\lambda_1(L^*)}$, for $\eps(n) = \frac{1}{2^n}$.
+3. $c\frac{\lambda_n(L)}{n} \leq c \frac{1}{\lambda_1(L^*)} \leq \eta_{\eps(n)}(L)$ for $\eps(n) = o(1)$ and any constant $c$.
+4. For $\vw = \va\matB^{-1} \in L^*, \vv = \matB \vc \in L$, $\vw \cdot \vv = \va \cdot \vc$.
 ** Other
-*** $\forall$ bases $\matB$ of $L$, $\minGS \leq \lambda_1(L)$.
-*** $\forall$ basis $\matB$ of $L$, $\det(L) := \vol(\calP(\matB)) = \prod_i \|\vb_i^*\|$.
-*** $\forall$ bases $\matB$ of $L$, $\det(L) \leq \prod_i \|\vb_i\|$.
-*** $\forall$ bases $\matB$ of $L$, $\det(L) = \sqrt{\det(\matB^t\matB)}$, and for the full-rank case, $\det(L) = |\!\det(\matB)|$.
+*** $\forall$ bases $\matB$ of $L$:
+1. $\minGS \leq \lambda_1(L)$.
+2. $\det(L) := \vol(\calP(\matB)) = \prod_i \|\vb_i^*\|$.
+3. $\det(L) \leq \prod_i \|\vb_i\|$.
+4. $\det(L) = \sqrt{\det(\matB^t\matB)}$, and for the full-rank case, $\det(L) = |\!\det(\matB)|$.
 *** Define \(\gamma\)-SVP for a number $\gamma$, but $\gamma$ is usually a monotonically increasing function of $n$.
 *** $\GapSVP_\gamma$ given $(\matB,d)$....
 
