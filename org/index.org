@@ -408,7 +408,7 @@ The input to $\GapSVL$ and $\BDD$ includes a lattice $L$ of dimension $n$.
 | $\Big\uparrow$                                 |
 | $\BDD$                                         |
 | $\Bigg\uparrow  \quad i.e., \GapSVL \leq \BDD$ |
-| $\GapSVL$                                      |
+| $\GapSVL$                                      | As a function of the dimension $n$, period $q(n)$ and finite group rank $r(n)$ this problem is easy for randomly selected lattices.  With high probability, $\delta \sqrt{n} \det(L)^{1/n} \leq \lambda_1(L) \leq \sqrt{n}\det(L)^{1/n}$ for a constant $\delta$.
 #+ATTR_HTML: :style width: 20% :align left
 [[file:assets/img/pillar.svg]] 
 
@@ -427,11 +427,15 @@ Notes:
 
 ** Besides not finding an algorithm yet, are there other ways to describe why the various problems might or might not have an efficient algorithm? 
 
+
 * Some lattice facts to organize
-** $\forall$ bases $\matB$ of $L$, $\minGS \leq \lambda_1(L)$.
-** $\forall$ basis $\matB$ of $L$, $\det(L) := \vol(\calP(\matB)) = \prod_i \|\vb_i^*\|$.
-** $\forall$ bases $\matB$ of $L$, $\det(L) \leq \prod_i \|\vb_i\|$.
-** $\forall$ bases $\matB$ of $L$, $\det(L) = \sqrt{\det(\matB^t\matB)}$, and for the full-rank case, $\det(L) = |\!\det(\matB)|$.
-** Define \(\gamma\)-SVP for a number $\gamma$, but $\gamma$ is usually a monotonically increasing function of $n$.
-** $\GapSVP_\gamma$ given $(\matB,d)$....
+** Lattices and their duals
+*** Lattices come in pairs $(L,L^*)$
+** Other
+*** $\forall$ bases $\matB$ of $L$, $\minGS \leq \lambda_1(L)$.
+*** $\forall$ basis $\matB$ of $L$, $\det(L) := \vol(\calP(\matB)) = \prod_i \|\vb_i^*\|$.
+*** $\forall$ bases $\matB$ of $L$, $\det(L) \leq \prod_i \|\vb_i\|$.
+*** $\forall$ bases $\matB$ of $L$, $\det(L) = \sqrt{\det(\matB^t\matB)}$, and for the full-rank case, $\det(L) = |\!\det(\matB)|$.
+*** Define \(\gamma\)-SVP for a number $\gamma$, but $\gamma$ is usually a monotonically increasing function of $n$.
+*** $\GapSVP_\gamma$ given $(\matB,d)$....
 
