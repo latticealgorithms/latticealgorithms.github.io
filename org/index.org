@@ -408,7 +408,7 @@ The input to $\GapSVL$ and $\BDD$ includes a lattice $L$ of dimension $n$.
 | $\Big\uparrow$                                 |
 | $\BDD$                                         |
 | $\Bigg\uparrow  \quad i.e., \GapSVL \leq \BDD$ |
-| $\GapSVL$                                      | As a function of the dimension $n$, period $q(n)$ and finite group rank $r(n)$ this problem is easy for randomly selected lattices.  With high probability, $\delta \sqrt{n} \det(L)^{1/n} \leq \lambda_1(L) \leq \sqrt{n}\det(L)^{1/n}$ for a constant $\delta$.
+| $\GapSVL$                                      | As a function of the dimension $n$, period $q(n)$ and finite group rank $r(n)$ GapSVL is easy for randomly selected lattices.  With high probability, $\delta \sqrt{n} \det(L)^{1/n} \leq \lambda_1(L) \leq \sqrt{n}\det(L)^{1/n} = \sqrt{n}q(n)^{1-r(n)/n}$ for a constant $\delta$.  This is the setting for $\LWE$ lattices.
 #+ATTR_HTML: :style width: 20% :align left
 [[file:assets/img/pillar.svg]] 
 
