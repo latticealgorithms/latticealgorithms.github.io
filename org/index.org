@@ -418,7 +418,8 @@ The typical way to handle being stuck is to break the problem down into special 
 As one of the L's in LLL once told me, when everyone is stuck on a problem, it is a form of art to back off the full problem and solve a subcase that is both nontrival and solvable.  
 ** Another possibility: lattice periodicity $\perL$ and finite group rank $\fgrL$
 Without loss of generality, a lattice can be specified by a basis $\matB$ and numbers $\per_1(L),\cdots,\per_n(L)$ with the following properties.  Let $\perL$ be the minimum number such that $\perL \Z^n \leq L$.
-  1. For each $i$, $\per_i(L)\cdot \vb_i$ is a multiple of $\perL$.
+  1. For each $i$, $\per_i(L)\cdot \vb_i$ is a multiple of $\perL$,
+  2. $1= \per_{n}(L)\ \big|\ \per_{n-1}(L)\ \big|\ \cdots\ \big|\  \per_1(L)\ \big|\ \perL$.
 In particular, $L \bmod \perL$ is a finite abelian group, and columns $\vb_{\fgrL+1},\ldots,\vb_n$ are $\vzero \bmod \perL$.  For $\SVP$ and $\CVP$ those columns do not provide extra information.
 * The classical theoretical justification for LWE
 Let $q(n) = 2^{3n}$.
