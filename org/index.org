@@ -265,6 +265,7 @@ title: Algorithms for lattice problems in NP \(\cap\) CoNP
 \newcommand{\vu}{\mathbf{u}}
 \newcommand{\vv}{\mathbf{v}}
 \newcommand{\vw}{\mathbf{w}}
+\newcommand{\vzero}{\mathbf{0}}
 \newcommand{\matA}{\mathbf A}
 \newcommand{\matAt}{\tilde{\mathbf A}}
 \newcommand{\matB}{\mathbf B}
@@ -274,10 +275,16 @@ title: Algorithms for lattice problems in NP \(\cap\) CoNP
 \newcommand{\matM}{\{\mathbf M}\} 
 \newcommand{\matR}{\{\mathbf R}\} 
 \newcommand{\calP}{\mathcal P} 
+\newcommand{\per}{p}
+\newcommand{\perL}{\per(L)}
+\newcommand{\fgr}{r}
+\newcommand{\fgrL}{\fgr(L)}
 \newcommand{\vol}{\operatorname{vol}}
 \newcommand{\LWE}{\operatorname{LWE}}
 \newcommand{\BDD}{\operatorname{BDD}}
+\newcommand{\CVP}{\operatorname{CVP}}
 \newcommand{\SVP}{\operatorname{SVP}}
+\newcommand{\GapCVP}{\operatorname{GapCVP}}
 \newcommand{\GapSVP}{\operatorname{GapSVP}}
 \newcommand{\GapSVL}{\operatorname{GapSVL}}
 \newcommand{\BitDecomp}{\operatorname{BitDecomp}}
@@ -396,22 +403,33 @@ One might say that $\BDD \leq_Q \LWE \leq \BDD$ to have a high-level understandi
 2. Concrete security involves choosing key sizes for implementations.  This uses the more the direct $\LWE$ $\leq$ $\BDD$ reduction, similar to Break RSA $\leq$ Factoring.  In this case a $\BDD$ algorithm of the right parameters can be used to solve LWE, because after an $\LWE$ instance is chosen and fixed, it is then a $\BDD$ instance.  Running $\BDD$ algorithms on those instances is used to understand how well algorithms perform on LWE.
 
 *** Technical references:
-**** [Reg05]: $\BDD \leq_Q \LWE$
-**** [Pei09]: $\BDD \leq \LWE$
+**** [Reg05]: $\BDD \leq \LWE$ for $q(n)=2^{3n}$.
+**** [Pei09]: $\GapSVL \leq \BDD$
 **** [LM09]: $\BDD \leq \SVP$
 **** [BLPRS13]: ?
 **** [EH21/EEH22]: $\BDD \leq_Q \LWE$.
 
+* Lattice parameters
+** Using the dimension $n = \dim(L)$ might prevent progress.
+Running times and approximation factors for lattices have typically been measured as a function of their dimension $n$.  It makes for nice, clean statements.  For example, LLL is a polynomial-time algorithm to compute vectors within a $2^n$ factor of the shortest vector.  Babai's algorithm takes also takes a vector in space and computes a close lattice vector that is within a $2^n$ factor of the closest.  These approximation factors are exponential in the dimension $n$.  It can be said that there is no efficient algorithm known to achieve subexponential or polynomial approximation factors.  See, for example [[https://cseweb.ucsd.edu/classes/fa21/cse206A-a/LecLLL.pdf][Remark 2]] and [[https://web.eecs.umich.edu/~cpeikert/pubs/lattice-survey.pdf][Page 8, Algorithms and Complexity]].  Furthermore, this has been the case for decades.  There are also classes of lattice problems that are NP-hard but are not relevant here because they are not in CoNP.
+
+The typical way to handle being stuck is to break the problem down into special cases to try to make progress.  For lattices, perhaps measuring everything in terms of the dimension is preventing progress.  For example, there might be an efficient algorithm for problems with subexponential approximation factors, but it's too hard to find it all at once, just like it's too hard to climb a mountain in one giant step.  
+
+As one of the L's in LLL once told me, when everyone is stuck on a problem, it is a form of art to back off the full problem and solve a subcase that is both nontrival and solvable.  
+** Another possibility: lattice periodicity $\perL$ and finite group rank $\fgrL$
+Without loss of generality, a lattice can be specified by a basis $\matB$ and numbers $\per_1(L),\cdots,\per_n(L)$ with the following properties.  Let $\perL$ be the minimum number such that $\perL \Z^n \leq L$.
+  1. For each $i$, $\per_i(L)\cdot \vb_i$ is a multiple of $\perL$.
+In particular, $L \bmod \perL$ is a finite abelian group, and columns $\vb_{\fgrL+1},\ldots,\vb_n$ are $\vzero \bmod \perL$.  For $\SVP$ and $\CVP$ those columns do not provide extra information.
 * The classical theoretical justification for LWE
 Let $q(n) = 2^{3n}$.
 
 The input to $\GapSVL$ and $\BDD$ includes a lattice $L$ of dimension $n$.
 | $\LWE_{q(n)}$                                  |
-| $\Big\uparrow$                                 |
+| $\Bigg\uparrow$                                |
 | $\BDD$                                         |
 | $\Bigg\uparrow  \quad i.e., \GapSVL \leq \BDD$ |
 | $\GapSVL$                                      | As a function of the dimension $n$, period $q(n)$ and finite group rank $r(n)$ GapSVL is easy for randomly selected lattices.  With high probability, $\delta \sqrt{n} \det(L)^{1/n} \leq \lambda_1(L) \leq \sqrt{n}\det(L)^{1/n} = \sqrt{n}q(n)^{1-r(n)/n}$ for a constant $\delta$.  This is the setting for $\LWE$ lattices.
-#+ATTR_HTML: :style width: 20% :align left
+#+ATTR_HTML: :style width: 30% :align left
 [[file:assets/img/pillar.svg]] 
 
 Notes:
@@ -419,7 +437,7 @@ Notes:
 2. $\BDD \leq \LWE_{2^{3n}}$ is a special case in [Reg09].  It is used as a black box in [Pei09].
 3. $\GapSVL \leq \BDD$ is from [Pei09].
 
-* Ideas that might or might not work
+* Ideas that may or may not work
 1. Amplitude amplification on a state containing shapes around each lattice point.
 2. Partition lattices in various ways to make progress.
    
@@ -437,6 +455,9 @@ Notes:
 2. $\eta_{\eps(n)}(L) \leq \frac{\sqrt{n}}{\lambda_1(L^*)}$, for $\eps(n) = \frac{1}{2^n}$.
 3. $c\frac{\lambda_n(L)}{n} \leq c \frac{1}{\lambda_1(L^*)} \leq \eta_{\eps(n)}(L)$ for $\eps(n) = o(1)$ and any constant $c$.
 4. For $\vw = \va\matB^{-1} \in L^*, \vv = \matB \vc \in L$, $\vw \cdot \vv = \va \cdot \vc$.
+*** Dual problems, approximation factors
+1. $\SVP$ vs. $\CVP$
+2. $\GapSVL$ vs. $\GapCVP$
 ** Other
 *** $\forall$ bases $\matB$ of $L$:
 1. $\minGS \leq \lambda_1(L)$.

@@ -257,6 +257,7 @@ title: Algorithms for lattice problems in NP \(\cap\) CoNP
 \newcommand{\vu}{\mathbf{u}}
 \newcommand{\vv}{\mathbf{v}}
 \newcommand{\vw}{\mathbf{w}}
+\newcommand{\vzero}{\mathbf{0}}
 \newcommand{\matA}{\mathbf A}
 \newcommand{\matAt}{\tilde{\mathbf A}}
 \newcommand{\matB}{\mathbf B}
@@ -266,10 +267,16 @@ title: Algorithms for lattice problems in NP \(\cap\) CoNP
 \newcommand{\matM}{\{\mathbf M}\} 
 \newcommand{\matR}{\{\mathbf R}\} 
 \newcommand{\calP}{\mathcal P} 
+\newcommand{\per}{p}
+\newcommand{\perL}{\per(L)}
+\newcommand{\fgr}{r}
+\newcommand{\fgrL}{\fgr(L)}
 \newcommand{\vol}{\operatorname{vol}}
 \newcommand{\LWE}{\operatorname{LWE}}
 \newcommand{\BDD}{\operatorname{BDD}}
+\newcommand{\CVP}{\operatorname{CVP}}
 \newcommand{\SVP}{\operatorname{SVP}}
+\newcommand{\GapCVP}{\operatorname{GapCVP}}
 \newcommand{\GapSVP}{\operatorname{GapSVP}}
 \newcommand{\GapSVL}{\operatorname{GapSVL}}
 \newcommand{\BitDecomp}{\operatorname{BitDecomp}}
@@ -285,7 +292,7 @@ title: Algorithms for lattice problems in NP \(\cap\) CoNP
 
 
 
-<div id="org50132d9" class="figure">
+<div id="org0f75e67" class="figure">
 <p><img src="assets/img/xyz.svg" alt="xyz.svg" class="org-svg" align="right" style="width: 40%" />
 </p>
 </div>
@@ -303,7 +310,7 @@ Here is a picture from <a href="https://arxiv.org/2201.13450">arxiv.org/abs/2201
 </p>
 
 
-<div id="orge78ca33" class="figure">
+<div id="org9578077" class="figure">
 <p><img src="assets/img/pic-ranges.jpg" alt="pic-ranges.jpg" width="75%" style="margin-left: auto; margin-right: auto;" />
 </p>
 </div>
@@ -316,8 +323,8 @@ The right three regions represent NP intersect CoNP, but most work has focused o
 To participate send email to {{ site.email }}.  Suggestions about all topics related to this site are welcome.  This includes technical information, how to organize topics, how to visualize what is known, anything at all.  Help can be public, private, or anoymous.  
 </p>
 
-<div id="outline-container-org1bcae03" class="outline-2">
-<h2 id="org1bcae03"><span class="section-number-2">1.</span> Upcoming topics</h2>
+<div id="outline-container-org6a319e3" class="outline-2">
+<h2 id="org6a319e3"><span class="section-number-2">1.</span> Upcoming topics</h2>
 <div class="outline-text-2" id="text-1">
 <ol class="org-ol">
 <li>What is NP intersect CoNP (i.e., NP \(\cap\) CoNP) and why is it relevant here?</li>
@@ -328,8 +335,8 @@ To participate send email to {{ site.email }}.  Suggestions about all topics rel
 </div>
 </div>
 
-<div id="outline-container-orgeaa6bb9" class="outline-2">
-<h2 id="orgeaa6bb9"><span class="section-number-2">2.</span> Questions</h2>
+<div id="outline-container-orgaf064cf" class="outline-2">
+<h2 id="orgaf064cf"><span class="section-number-2">2.</span> Questions</h2>
 <div class="outline-text-2" id="text-2">
 <ol class="org-ol">
 <li>Why does <a href="https://latticechallenge.org">latticechallenge.org</a> only have \(q\) = prime and not the power-of-two case?  What about \(q=n^2\)?</li>
@@ -338,8 +345,8 @@ To participate send email to {{ site.email }}.  Suggestions about all topics rel
 </div>
 </div>
 
-<div id="outline-container-orgf78b810" class="outline-2">
-<h2 id="orgf78b810"><span class="section-number-2">3.</span> Open Problems</h2>
+<div id="outline-container-orgbb3cab9" class="outline-2">
+<h2 id="orgbb3cab9"><span class="section-number-2">3.</span> Open Problems</h2>
 <div class="outline-text-2" id="text-3">
 <ol class="org-ol">
 <li>The driving question, way off in the distance: does a polynomial-time algorithm exist for solving any lattice problems with polynomial approximation factor?</li>
@@ -349,8 +356,8 @@ To participate send email to {{ site.email }}.  Suggestions about all topics rel
 </div>
 </div>
 
-<div id="outline-container-org18d9fa2" class="outline-2">
-<h2 id="org18d9fa2"><span class="section-number-2">4.</span> Links to lattice-based cryptography</h2>
+<div id="outline-container-orgbd53bae" class="outline-2">
+<h2 id="orgbd53bae"><span class="section-number-2">4.</span> Links to lattice-based cryptography</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 A lot of amazing tools have been developed in lattice-based cryptography over the last couple of decades.  Perhaps they can help with algorithms for lattice problems in NP \(\cap\) CoNP also.  There will be some translation necessary.
@@ -358,8 +365,8 @@ A lot of amazing tools have been developed in lattice-based cryptography over th
 </div>
 </div>
 
-<div id="outline-container-orgbbcb793" class="outline-2">
-<h2 id="orgbbcb793"><span class="section-number-2">5.</span> Reductions are the tool to compare the relative computational difficulty of problems</h2>
+<div id="outline-container-org7cfb3ba" class="outline-2">
+<h2 id="org7cfb3ba"><span class="section-number-2">5.</span> Reductions are the tool to compare the relative computational difficulty of problems</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 In computer science there are not good tools to prove that efficient algorithms don't exist to solve a problem.  Most problem in NP either have a polynomial-time algorithm or they can be shown to be NP-complete.  NP-complete are not generally believed to have efficient classical or quantum algorithms, but they are not the topic of this site.  Here the focus in on problems that are in NP$&cap;$CoNP.  This includes the class of polynomial-time solvable problems.
@@ -375,8 +382,8 @@ A problem \(A\) reduces to a problem \(B\), written \(A \leq B\), if an algorith
 </ul>
 </div>
 
-<div id="outline-container-org148a7d5" class="outline-3">
-<h3 id="org148a7d5"><span class="section-number-3">5.1.</span> Simple examples using polynomial-time reductions and algorithms but avoiding necessary technicality:</h3>
+<div id="outline-container-org5484507" class="outline-3">
+<h3 id="org5484507"><span class="section-number-3">5.1.</span> Simple examples using polynomial-time reductions and algorithms but avoiding necessary technicality:</h3>
 <div class="outline-text-3" id="text-5-1">
 <ol class="org-ol">
 <li>Break RSA mod \(N\) \(\leq\) factor \(N\).
@@ -390,12 +397,12 @@ Therefore, if there is no quantum algorithm for SVP, then there is no quantum al
 </div>
 
 
-<div id="outline-container-orga25f56a" class="outline-2">
-<h2 id="orga25f56a"><span class="section-number-2">6.</span> \(\BDD\) is not \(\LWE\)</h2>
+<div id="outline-container-orgef91679" class="outline-2">
+<h2 id="orgef91679"><span class="section-number-2">6.</span> \(\BDD\) is not \(\LWE\)</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-org37d636d" class="outline-3">
-<h3 id="org37d636d"><span class="section-number-3">6.1.</span> Bounded Distance Decoding (\(\BDD\)) and Learning With Errors (\(\LWE\)) are not the same problem.  They are related in important ways, but they are also different in important ways.</h3>
+<div id="outline-container-org530d9cf" class="outline-3">
+<h3 id="org530d9cf"><span class="section-number-3">6.1.</span> Bounded Distance Decoding (\(\BDD\)) and Learning With Errors (\(\LWE\)) are not the same problem.  They are related in important ways, but they are also different in important ways.</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 One might say that \(\BDD \leq_Q \LWE \leq \BDD\) to have a high-level understanding of the relationship, but what's missing in that statement are the parameters that give the relationships necessary meaning.
@@ -408,24 +415,59 @@ One might say that \(\BDD \leq_Q \LWE \leq \BDD\) to have a high-level understan
 </ol>
 </div>
 
-<div id="outline-container-orgf106010" class="outline-4">
-<h4 id="orgf106010"><span class="section-number-4">6.1.1.</span> Technical references:</h4>
+<div id="outline-container-org7787df9" class="outline-4">
+<h4 id="org7787df9"><span class="section-number-4">6.1.1.</span> Technical references:</h4>
 <div class="outline-text-4" id="text-6-1-1">
 </div>
 <ol class="org-ol">
-<li><a id="orge74b65e"></a>[Reg05]: \(\BDD \leq_Q \LWE\)<br /></li>
-<li><a id="org5e3f505"></a>[Pei09]: \(\BDD \leq \LWE\)<br /></li>
-<li><a id="orgbbadf0f"></a>[LM09]: \(\BDD \leq \SVP\)<br /></li>
-<li><a id="org7c2e4e2"></a>[BLPRS13]: ?<br /></li>
-<li><a id="org77b7701"></a>[EH21/EEH22]: \(\BDD \leq_Q \LWE\).<br /></li>
+<li><a id="orgfc620a3"></a>[Reg05]: \(\BDD \leq \LWE\) for \(q(n)=2^{3n}\).<br /></li>
+<li><a id="org2248952"></a>[Pei09]: \(\GapSVL \leq \BDD\)<br /></li>
+<li><a id="org32660c1"></a>[LM09]: \(\BDD \leq \SVP\)<br /></li>
+<li><a id="orgc5b0c9e"></a>[BLPRS13]: ?<br /></li>
+<li><a id="orgf41e6ba"></a>[EH21/EEH22]: \(\BDD \leq_Q \LWE\).<br /></li>
 </ol>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgc91e3e4" class="outline-2">
-<h2 id="orgc91e3e4"><span class="section-number-2">7.</span> The classical theoretical justification for LWE</h2>
+<div id="outline-container-orgd33cf5c" class="outline-2">
+<h2 id="orgd33cf5c"><span class="section-number-2">7.</span> Lattice parameters</h2>
 <div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-org9558ddf" class="outline-3">
+<h3 id="org9558ddf"><span class="section-number-3">7.1.</span> Using the dimension \(n = \dim(L)\) might prevent progress.</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+Running times and approximation factors for lattices have typically been measured as a function of their dimension \(n\).  It makes for nice, clean statements.  For example, LLL is a polynomial-time algorithm to compute vectors within a \(2^n\) factor of the shortest vector.  Babai's algorithm takes also takes a vector in space and computes a close lattice vector that is within a \(2^n\) factor of the closest.  These approximation factors are exponential in the dimension \(n\).  It can be said that there is no efficient algorithm known to achieve subexponential or polynomial approximation factors.  See, for example <a href="https://cseweb.ucsd.edu/classes/fa21/cse206A-a/LecLLL.pdf">Remark 2</a> and <a href="https://web.eecs.umich.edu/~cpeikert/pubs/lattice-survey.pdf">Page 8, Algorithms and Complexity</a>.  Furthermore, this has been the case for decades.  There are also classes of lattice problems that are NP-hard but are not relevant here because they are not in CoNP.
+</p>
+
+<p>
+The typical way to handle being stuck is to break the problem down into special cases to try to make progress.  For lattices, perhaps measuring everything in terms of the dimension is preventing progress.  For example, there might be an efficient algorithm for problems with subexponential approximation factors, but it's too hard to find it all at once, just like it's too hard to climb a mountain in one giant step.  
+</p>
+
+<p>
+As one of the L's in LLL once told me, when everyone is stuck on a problem, it is a form of art to back off the full problem and solve a subcase that is both nontrival and solvable.  
+</p>
+</div>
+</div>
+<div id="outline-container-org26d4042" class="outline-3">
+<h3 id="org26d4042"><span class="section-number-3">7.2.</span> Another possibility: lattice periodicity \(\perL\) and finite group rank \(\fgrL\)</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+Without loss of generality, a lattice can be specified by a basis \(\matB\) and numbers \(\per_1(L),\cdots,\per_n(L)\) with the following properties.  Let \(\perL\) be the minimum number such that \(\perL \Z^n \leq L\).
+</p>
+<ol class="org-ol">
+<li>For each \(i\), \(\per_i(L)\cdot \vb_i\) is a multiple of \(\perL\).</li>
+</ol>
+<p>
+In particular, \(L \bmod \perL\) is a finite abelian group, and columns \(\vb_{\fgrL+1},\ldots,\vb_n\) are \(\vzero \bmod \perL\).  For \(\SVP\) and \(\CVP\) those columns do not provide extra information.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org7ed40dc" class="outline-2">
+<h2 id="org7ed40dc"><span class="section-number-2">8.</span> The classical theoretical justification for LWE</h2>
+<div class="outline-text-2" id="text-8">
 <p>
 Let \(q(n) = 2^{3n}\).
 </p>
@@ -445,7 +487,7 @@ The input to \(\GapSVL\) and \(\BDD\) includes a lattice \(L\) of dimension \(n\
 </tr>
 
 <tr>
-<td class="org-left">\(\Big\uparrow\)</td>
+<td class="org-left">\(\Bigg\uparrow\)</td>
 </tr>
 
 <tr>
@@ -463,8 +505,8 @@ The input to \(\GapSVL\) and \(\BDD\) includes a lattice \(L\) of dimension \(n\
 </tbody>
 </table>
 
-<div id="orge4e707b" class="figure">
-<p><img src="assets/img/pillar.svg" alt="pillar.svg" class="org-svg" style="width: 20%" align="left" /> 
+<div id="org4141bfc" class="figure">
+<p><img src="assets/img/pillar.svg" alt="pillar.svg" class="org-svg" style="width: 30%" align="left" /> 
 </p>
 </div>
 
@@ -479,9 +521,9 @@ Notes:
 </div>
 </div>
 
-<div id="outline-container-orgff14a66" class="outline-2">
-<h2 id="orgff14a66"><span class="section-number-2">8.</span> Ideas that might or might not work</h2>
-<div class="outline-text-2" id="text-8">
+<div id="outline-container-org2d2ab4f" class="outline-2">
+<h2 id="org2d2ab4f"><span class="section-number-2">9.</span> Ideas that may or may not work</h2>
+<div class="outline-text-2" id="text-9">
 <ol class="org-ol">
 <li>Amplitude amplification on a state containing shapes around each lattice point.</li>
 <li>Partition lattices in various ways to make progress.</li>
@@ -489,36 +531,36 @@ Notes:
 </div>
 </div>
 
-<div id="outline-container-orgdccff6c" class="outline-2">
-<h2 id="orgdccff6c"><span class="section-number-2">9.</span> Road blocks</h2>
-<div class="outline-text-2" id="text-9">
+<div id="outline-container-orgc3fc151" class="outline-2">
+<h2 id="orgc3fc151"><span class="section-number-2">10.</span> Road blocks</h2>
+<div class="outline-text-2" id="text-10">
 </div>
-<div id="outline-container-org7318279" class="outline-3">
-<h3 id="org7318279"><span class="section-number-3">9.1.</span> Cannot do the following</h3>
-<div class="outline-text-3" id="text-9-1">
+<div id="outline-container-org6086362" class="outline-3">
+<h3 id="org6086362"><span class="section-number-3">10.1.</span> Cannot do the following</h3>
+<div class="outline-text-3" id="text-10-1">
 <ol class="org-ol">
 <li>Using FHE, given \(\matA, \matA\vs+\ve\), compute \(\matA', \matA'(q/2)\vs+\ve'\).</li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-org037821a" class="outline-3">
-<h3 id="org037821a"><span class="section-number-3">9.2.</span> Besides not finding an algorithm yet, are there other ways to describe why the various problems might or might not have an efficient algorithm?</h3>
+<div id="outline-container-org193f7f7" class="outline-3">
+<h3 id="org193f7f7"><span class="section-number-3">10.2.</span> Besides not finding an algorithm yet, are there other ways to describe why the various problems might or might not have an efficient algorithm?</h3>
 </div>
 </div>
 
 
-<div id="outline-container-org34d5262" class="outline-2">
-<h2 id="org34d5262"><span class="section-number-2">10.</span> Some lattice facts to organize</h2>
-<div class="outline-text-2" id="text-10">
+<div id="outline-container-org84b8861" class="outline-2">
+<h2 id="org84b8861"><span class="section-number-2">11.</span> Some lattice facts to organize</h2>
+<div class="outline-text-2" id="text-11">
 </div>
-<div id="outline-container-orge9ebf83" class="outline-3">
-<h3 id="orge9ebf83"><span class="section-number-3">10.1.</span> Lattices and their duals</h3>
-<div class="outline-text-3" id="text-10-1">
+<div id="outline-container-org504b9d8" class="outline-3">
+<h3 id="org504b9d8"><span class="section-number-3">11.1.</span> Lattices and their duals</h3>
+<div class="outline-text-3" id="text-11-1">
 </div>
-<div id="outline-container-org197f733" class="outline-4">
-<h4 id="org197f733"><span class="section-number-4">10.1.1.</span> Lattices come in pairs \((L,L^*)\)</h4>
-<div class="outline-text-4" id="text-10-1-1">
+<div id="outline-container-orgb48dec9" class="outline-4">
+<h4 id="orgb48dec9"><span class="section-number-4">11.1.1.</span> Lattices come in pairs \((L,L^*)\)</h4>
+<div class="outline-text-4" id="text-11-1-1">
 <ol class="org-ol">
 <li>\(1 \leq \lambda_1(L) \cdot \lambda_n(L^*) \leq n\).</li>
 <li>\(\eta_{\eps(n)}(L) \leq \frac{\sqrt{n}}{\lambda_1(L^*)}\), for \(\eps(n) = \frac{1}{2^n}\).</li>
@@ -527,14 +569,23 @@ Notes:
 </ol>
 </div>
 </div>
+<div id="outline-container-orge715a6d" class="outline-4">
+<h4 id="orge715a6d"><span class="section-number-4">11.1.2.</span> Dual problems, approximation factors</h4>
+<div class="outline-text-4" id="text-11-1-2">
+<ol class="org-ol">
+<li>\(\SVP\) vs. \(\CVP\)</li>
+<li>\(\GapSVL\) vs. \(\GapCVP\)</li>
+</ol>
 </div>
-<div id="outline-container-org3a7a840" class="outline-3">
-<h3 id="org3a7a840"><span class="section-number-3">10.2.</span> Other</h3>
-<div class="outline-text-3" id="text-10-2">
 </div>
-<div id="outline-container-org22d6b2a" class="outline-4">
-<h4 id="org22d6b2a"><span class="section-number-4">10.2.1.</span> \(\forall\) bases \(\matB\) of \(L\):</h4>
-<div class="outline-text-4" id="text-10-2-1">
+</div>
+<div id="outline-container-org3274adc" class="outline-3">
+<h3 id="org3274adc"><span class="section-number-3">11.2.</span> Other</h3>
+<div class="outline-text-3" id="text-11-2">
+</div>
+<div id="outline-container-org99cf5a2" class="outline-4">
+<h4 id="org99cf5a2"><span class="section-number-4">11.2.1.</span> \(\forall\) bases \(\matB\) of \(L\):</h4>
+<div class="outline-text-4" id="text-11-2-1">
 <ol class="org-ol">
 <li>\(\minGS \leq \lambda_1(L)\).</li>
 <li>\(\det(L) := \vol(\calP(\matB)) = \prod_i \|\vb_i^*\|\).</li>
@@ -543,11 +594,11 @@ Notes:
 </ol>
 </div>
 </div>
-<div id="outline-container-org69fa7d9" class="outline-4">
-<h4 id="org69fa7d9"><span class="section-number-4">10.2.2.</span> Define \(\gamma\)-SVP for a number \(\gamma\), but \(\gamma\) is usually a monotonically increasing function of \(n\).</h4>
+<div id="outline-container-org41815c7" class="outline-4">
+<h4 id="org41815c7"><span class="section-number-4">11.2.2.</span> Define \(\gamma\)-SVP for a number \(\gamma\), but \(\gamma\) is usually a monotonically increasing function of \(n\).</h4>
 </div>
-<div id="outline-container-org7df71f6" class="outline-4">
-<h4 id="org7df71f6"><span class="section-number-4">10.2.3.</span> \(\GapSVP_\gamma\) given \((\matB,d)\)&#x2026;.</h4>
+<div id="outline-container-orga9d3b46" class="outline-4">
+<h4 id="orga9d3b46"><span class="section-number-4">11.2.3.</span> \(\GapSVP_\gamma\) given \((\matB,d)\)&#x2026;.</h4>
 </div>
 </div>
 </div>
