@@ -280,6 +280,7 @@ title: Algorithms for lattice problems in NP \(\cap\) CoNP
 \newcommand{\fgr}{r}
 \newcommand{\fgrL}{\fgr(L)}
 \newcommand{\vol}{\operatorname{vol}}
+\newcommand{\rndL}{\tilde{L}}
 \newcommand{\LWE}{\operatorname{LWE}}
 \newcommand{\BDD}{\operatorname{BDD}}
 \newcommand{\CVP}{\operatorname{CVP}}
@@ -413,23 +414,25 @@ One might say that $\BDD \leq_Q \LWE \leq \BDD$ to have a high-level understandi
 ** Using the dimension $n = \dim(L)$ might prevent progress.
 Running times and approximation factors for lattices have typically been measured as a function of their dimension $n$.  It makes for nice, clean statements.  For example, LLL is a polynomial-time algorithm to compute vectors within a $2^n$ factor of the shortest vector.  Babai's algorithm takes also takes a vector in space and computes a close lattice vector that is within a $2^n$ factor of the closest.  These approximation factors are exponential in the dimension $n$.  It can be said that there is no efficient algorithm known to achieve subexponential or polynomial approximation factors.  See, for example [[https://cseweb.ucsd.edu/classes/fa21/cse206A-a/LecLLL.pdf][Remark 2]] and [[https://web.eecs.umich.edu/~cpeikert/pubs/lattice-survey.pdf][Page 8, Algorithms and Complexity]].  Furthermore, this has been the case for decades.  There are also classes of lattice problems that are NP-hard but are not relevant here because they are not in CoNP.
 
-The typical way to handle being stuck is to break the problem down into special cases to try to make progress.  For lattices, perhaps measuring everything in terms of the dimension is preventing progress.  For example, there might be an efficient algorithm for problems with subexponential approximation factors, but it's too hard to find it all at once, just like it's too hard to climb a mountain in one giant step.  
+The typical way to handle being stuck is to break the problem down into special cases to try to make progress.  For lattices, perhaps measuring everything in terms of the dimension is preventing progress.  For example, there might be an efficient algorithm for problems with a subexponential approximation factor, like $2^\sqrt{n}$, but it's too hard to find it all at once, just like it's too hard to climb a mountain in one giant step.  
 
-As one of the L's in LLL once told me, when everyone is stuck on a problem, it is a form of art to back off the full problem and solve a subcase that is both nontrival and solvable.  
+As one of the L's in LLL once told me, when everyone is stuck on a problem, it is a form of art to back off the full problem and solve a subcase that is both nontrivial and solvable.  
+
 ** Another possibility: lattice periodicity $\perL$ and finite group rank $\fgrL$
 Without loss of generality, a lattice can be specified by a basis $\matB$ and numbers $\per_1(L),\cdots,\per_n(L)$ with the following properties.  Let $\perL$ be the minimum number such that $\perL \Z^n \leq L$.
   1. For each $i$, $\per_i(L)\cdot \vb_i$ is a multiple of $\perL$,
   2. $1= \per_{n}(L)\ \big|\ \per_{n-1}(L)\ \big|\ \cdots\ \big|\  \per_1(L)\ \big|\ \perL$.
 In particular, $L \bmod \perL$ is a finite abelian group, and columns $\vb_{\fgrL+1},\ldots,\vb_n$ are $\vzero \bmod \perL$.  For $\SVP$ and $\CVP$ those columns do not provide extra information.
+
 * The classical theoretical justification for LWE
 Let $q(n) = 2^{3n}$.
 
 The input to $\GapSVL$ and $\BDD$ includes a lattice $L$ of dimension $n$.
-| $\LWE_{q(n)}$                                  |
+| $\LWE_{q(n)}$                                  |  As a function of the  worst-case dimension $n$, period $q(n)$, and dimension $m(n)$ of the associated $\LWE$ lattice $\rndL$, approximating the length of the shortest vector of randomly selected lattices $\rndL$ can be done since, with high probability, $\delta \sqrt{m(n)} \det(\rndL)^{1/n} \leq \lambda_1(\rndL) \leq \sqrt{m(n)}\det(\rndL)^{1/n} = \sqrt{m(n)}q(n)^{1-n/m(n)}$ for a constant $\delta$.
 | $\Bigg\uparrow$                                |
 | $\BDD$                                         |
 | $\Bigg\uparrow  \quad i.e., \GapSVL \leq \BDD$ |
-| $\GapSVL$                                      | As a function of the dimension $n$, period $q(n)$ and finite group rank $r(n)$ GapSVL is easy for randomly selected lattices.  With high probability, $\delta \sqrt{n} \det(L)^{1/n} \leq \lambda_1(L) \leq \sqrt{n}\det(L)^{1/n} = \sqrt{n}q(n)^{1-r(n)/n}$ for a constant $\delta$.  This is the setting for $\LWE$ lattices.
+| $\GapSVL$                                      |   Approximate the length of shortest vector a lattice $L$ that us taken from a certain subset of \(n\)-dimensional lattices.
 #+ATTR_HTML: :style width: 30% :align left
 [[file:assets/img/pillar.svg]] 
 
