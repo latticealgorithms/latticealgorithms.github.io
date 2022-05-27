@@ -397,9 +397,9 @@ A problem $A$ reduces to a problem $B$, written $A \leq B$, if an algorithm for 
 * $\BDD$ is not $\LWE$
 ** Bounded Distance Decoding ($\BDD$) and Learning With Errors ($\LWE$) are not the same problem.  They are related in important ways, but they are also different in important ways.
 
-One might say that $\BDD \leq_Q \LWE \leq \BDD$ to have a high-level understanding of the relationship, but what's missing in that statement are the parameters that give the relationships necessary meaning.
+One might say that $\BDD \leq \LWE \leq \BDD$ to have a high-level understanding of the relationship, but what's missing in that statement are the parameters and problem definitions that give the relationships the necessary meaning.
 
-1. The theoretical connection $\BDD \leq_Q \LWE$ is used to conclude that an algorithm for $\LWE$ can be used to construct a quantum algorithm for $\BDD$.  No quantum algorithm is known for $\BDD$ yet, so 
+1. The theoretical connection $\BDD \leq \LWE$ is used to conclude that an algorithm for $\LWE$ can be used to construct a quantum algorithm for $\BDD$. 
 
 2. Concrete security involves choosing key sizes for implementations.  This uses the more the direct $\LWE$ $\leq$ $\BDD$ reduction, similar to Break RSA $\leq$ Factoring.  In this case a $\BDD$ algorithm of the right parameters can be used to solve LWE, because after an $\LWE$ instance is chosen and fixed, it is then a $\BDD$ instance.  Running $\BDD$ algorithms on those instances is used to understand how well algorithms perform on LWE.
 
