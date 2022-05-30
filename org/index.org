@@ -403,6 +403,10 @@ One might say that $\BDD \leq \LWE \leq \BDD$ to have a high-level understanding
 
 2. Concrete security involves choosing key sizes for implementations.  This uses the more the direct $\LWE$ $\leq$ $\BDD$ reduction, similar to Break RSA $\leq$ Factoring.  In this case a $\BDD$ algorithm of the right parameters can be used to solve LWE, because after an $\LWE$ instance is chosen and fixed, it is then a $\BDD$ instance.  Running $\BDD$ algorithms on those instances is used to understand how well algorithms perform on LWE.
 
+#+ATTR_HTML: :style width: 70%
+#+ATTR_HTML: :align right
+[[file:assets/img/reductionblock.svg]]
+
 *** Technical references:
 **** [Reg05]: $\BDD \leq \LWE$ for $q(n)=2^{3n}$.
 **** [Pei09]: $\GapSVL \leq \BDD$
