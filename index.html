@@ -266,6 +266,7 @@ title: Algorithms for lattice problems in NP \(\cap\) CoNP
 \newcommand{\matI}{\{\mathbf I}\} 
 \newcommand{\matM}{\{\mathbf M}\} 
 \newcommand{\matR}{\{\mathbf R}\} 
+\newcommand{\matW}{\mathbf{W}}
 \newcommand{\calP}{\mathcal P} 
 \newcommand{\per}{p}
 \newcommand{\perL}{\per(L)}
@@ -277,13 +278,27 @@ title: Algorithms for lattice problems in NP \(\cap\) CoNP
 \newcommand{\BDD}{\operatorname{BDD}}
 \newcommand{\CVP}{\operatorname{CVP}}
 \newcommand{\SVP}{\operatorname{SVP}}
+\newcommand{\SIVP}{\operatorname{SIVP}}
 \newcommand{\GapCVP}{\operatorname{GapCVP}}
 \newcommand{\GapSVP}{\operatorname{GapSVP}}
 \newcommand{\GapSVL}{\operatorname{GapSVL}}
 \newcommand{\BitDecomp}{\operatorname{BitDecomp}}
 \newcommand{\Flatten}{\operatorname{Flatten}}
 \newcommand{\Powersoftwo}{\operatorname{Powersof2}}
-\newcommand{\<}{\langle} \renewcommand{\>}{\rangle}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\newcommand{\pfactor}{\gamma}
+\newcommand{\dfactor}{\Gamma}
+\newcommand{\vD}{\mathbf{\Delta}}
+\newcommand{\qq}{q}
+\newcommand{\pv}{\mathbf{v}}
+\newcommand{\dv}{\mathbf{w}}
+\newcommand{\pL}{L}
+\newcommand{\pB}{\mathbf{B}}
+\newcommand{\dL}{L^*}
+\newcommand{\dB}{\mathbf{D}}
+\newcommand{\Gdist}[1]{G(#1)}
+\newcommand{\Gsup}[1]{|G(#1)\rangle}
 \newcommand{\flattenlen}{\{k \log q}\}
 \newcommand{\klogq}{\{k \log q}\}
 \newcommand{\flatc}{\overline{\vc}}
@@ -293,7 +308,7 @@ title: Algorithms for lattice problems in NP \(\cap\) CoNP
 
 
 
-<div id="org6bf5d8a" class="figure">
+<div id="orgd72acf4" class="figure">
 <p><img src="assets/img/xyz.svg" alt="xyz.svg" class="org-svg" align="right" style="width: 40%" />
 </p>
 </div>
@@ -311,7 +326,7 @@ Here is a picture from <a href="https://arxiv.org/2201.13450">arxiv.org/abs/2201
 </p>
 
 
-<div id="orge83423c" class="figure">
+<div id="org4facc34" class="figure">
 <p><img src="assets/img/pic-ranges.jpg" alt="pic-ranges.jpg" width="75%" style="margin-left: auto; margin-right: auto;" />
 </p>
 </div>
@@ -324,8 +339,8 @@ The right three regions represent NP intersect CoNP, but most work has focused o
 To participate send email to {{ site.email }}.  Suggestions about all topics related to this site are welcome.  This includes technical information, how to organize topics, how to visualize what is known, anything at all.  Help can be public, private, or anoymous.  
 </p>
 
-<div id="outline-container-orga6c2ee5" class="outline-2">
-<h2 id="orga6c2ee5"><span class="section-number-2">1.</span> Upcoming topics</h2>
+<div id="outline-container-orgf6afda4" class="outline-2">
+<h2 id="orgf6afda4"><span class="section-number-2">1.</span> Upcoming topics</h2>
 <div class="outline-text-2" id="text-1">
 <ol class="org-ol">
 <li>What is NP intersect CoNP (i.e., NP \(\cap\) CoNP) and why is it relevant here?</li>
@@ -336,8 +351,8 @@ To participate send email to {{ site.email }}.  Suggestions about all topics rel
 </div>
 </div>
 
-<div id="outline-container-org316ad16" class="outline-2">
-<h2 id="org316ad16"><span class="section-number-2">2.</span> Questions</h2>
+<div id="outline-container-org4987b66" class="outline-2">
+<h2 id="org4987b66"><span class="section-number-2">2.</span> Questions</h2>
 <div class="outline-text-2" id="text-2">
 <ol class="org-ol">
 <li>Why does <a href="https://latticechallenge.org">latticechallenge.org</a> only have \(q\) = prime and not the power-of-two case?  What about \(q=n^2\)?</li>
@@ -346,8 +361,8 @@ To participate send email to {{ site.email }}.  Suggestions about all topics rel
 </div>
 </div>
 
-<div id="outline-container-orgcb3eff0" class="outline-2">
-<h2 id="orgcb3eff0"><span class="section-number-2">3.</span> Open Problems</h2>
+<div id="outline-container-org1f681b9" class="outline-2">
+<h2 id="org1f681b9"><span class="section-number-2">3.</span> Open Problems</h2>
 <div class="outline-text-2" id="text-3">
 <ol class="org-ol">
 <li>The driving question, way off in the distance: does a polynomial-time algorithm exist for solving any lattice problems with polynomial approximation factor?</li>
@@ -357,8 +372,8 @@ To participate send email to {{ site.email }}.  Suggestions about all topics rel
 </div>
 </div>
 
-<div id="outline-container-org4abb1a9" class="outline-2">
-<h2 id="org4abb1a9"><span class="section-number-2">4.</span> Links to lattice-based cryptography</h2>
+<div id="outline-container-org236725a" class="outline-2">
+<h2 id="org236725a"><span class="section-number-2">4.</span> Links to lattice-based cryptography</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 A lot of amazing tools have been developed in lattice-based cryptography over the last couple of decades.  Perhaps they can help with algorithms for lattice problems in NP \(\cap\) CoNP also.  There will be some translation necessary.
@@ -366,8 +381,8 @@ A lot of amazing tools have been developed in lattice-based cryptography over th
 </div>
 </div>
 
-<div id="outline-container-org7a37160" class="outline-2">
-<h2 id="org7a37160"><span class="section-number-2">5.</span> Reductions are the tool to compare the relative computational difficulty of problems</h2>
+<div id="outline-container-org300a525" class="outline-2">
+<h2 id="org300a525"><span class="section-number-2">5.</span> Reductions are the tool to compare the relative computational difficulty of problems</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 In computer science there are not good tools to prove that efficient algorithms don't exist to solve a problem.  Most problem in NP either have a polynomial-time algorithm or they can be shown to be NP-complete.  NP-complete are not generally believed to have efficient classical or quantum algorithms, but they are not the topic of this site.  Here the focus in on problems that are in NP$&cap;$CoNP.  This includes the class of polynomial-time solvable problems.
@@ -383,8 +398,8 @@ A problem \(A\) reduces to a problem \(B\), written \(A \leq B\), if an algorith
 </ul>
 </div>
 
-<div id="outline-container-org31da696" class="outline-3">
-<h3 id="org31da696"><span class="section-number-3">5.1.</span> Simple examples using polynomial-time reductions and algorithms but avoiding necessary technicality:</h3>
+<div id="outline-container-orgb2a8e77" class="outline-3">
+<h3 id="orgb2a8e77"><span class="section-number-3">5.1.</span> Simple examples using polynomial-time reductions and algorithms but avoiding necessary technicality:</h3>
 <div class="outline-text-3" id="text-5-1">
 <ol class="org-ol">
 <li>Break RSA mod \(N\) \(\leq\) factor \(N\).
@@ -398,12 +413,12 @@ Therefore, if there is no quantum algorithm for SVP, then there is no quantum al
 </div>
 
 
-<div id="outline-container-org13966ec" class="outline-2">
-<h2 id="org13966ec"><span class="section-number-2">6.</span> \(\BDD\) is not \(\LWE\)</h2>
+<div id="outline-container-org82087f6" class="outline-2">
+<h2 id="org82087f6"><span class="section-number-2">6.</span> \(\BDD\) is not \(\LWE\)</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-org1d83ea8" class="outline-3">
-<h3 id="org1d83ea8"><span class="section-number-3">6.1.</span> Bounded Distance Decoding (\(\BDD\)) and Learning With Errors (\(\LWE\)) are not the same problem.  They are related in important ways, but they are also different in important ways.</h3>
+<div id="outline-container-orgc21e7f9" class="outline-3">
+<h3 id="orgc21e7f9"><span class="section-number-3">6.1.</span> Bounded Distance Decoding (\(\BDD\)) and Learning With Errors (\(\LWE\)) are not the same problem.  They are related in important ways, but they are also different in important ways.</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 One might say that \(\BDD \leq \LWE \leq \BDD\) to have a high-level understanding of the relationship, but what's missing in that statement are the parameters and problem definitions that give the relationships the necessary meaning.
@@ -414,35 +429,125 @@ One might say that \(\BDD \leq \LWE \leq \BDD\) to have a high-level understandi
 
 <li>Concrete security involves choosing key sizes for implementations.  This uses the more the direct \(\LWE\) \(\leq\) \(\BDD\) reduction, similar to Break RSA \(\leq\) Factoring.  In this case a \(\BDD\) algorithm of the right parameters can be used to solve LWE, because after an \(\LWE\) instance is chosen and fixed, it is then a \(\BDD\) instance.  Running \(\BDD\) algorithms on those instances is used to understand how well algorithms perform on LWE.</li>
 </ol>
+</div>
+</div>
 
 
-<div id="orgae5eff7" class="figure">
+<div id="outline-container-orgcb5a163" class="outline-3">
+<h3 id="orgcb5a163"><span class="section-number-3">6.2.</span> The classical reduction from \(\BDD\) to \(\LWE\)</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+The first step of the worst-case to average-case reduction in [Reg09] is a classical reduction from \(\BDD\) to \(\LWE\).  Here is a sketch.
+</p>
+
+<p>
+Let \(\qq(n)\) and \(\pfactor(n)\) be functions.<br />
+Let \(m(n)\) be a polynomial in \(n\).<br />
+Input: \(\pB\) for lattice \(\pL\) of dimension \(n\), target vector \(\vt = \pB\cdot \vs + \vD\), \(\|\vD\| \leq \pfactor(\dL) \lambda_1(\pL)\)
+</p>
+<ol class="org-ol">
+<li>Sample \(\dv_1,\ldots, \dv_{m(n)} \in \dL\) according to a Gaussian with parameter \(\varphi_{3n}(\dL)\).</li>
+<li>For \(i = 1, \ldots , m(n)\):
+<ol class="org-ol">
+<li>Compute \(\va_i = \dv_i \cdot \pB \bmod \qq(n)\).</li>
+<li>Compute \(b_i = \dv_i \cdot \vt \bmod \qq(n)\).</li>
+</ol></li>
+<li>Call the \(\LWE\) oracle with \((\va_1,b_1), \ldots, (\va_{m(n)}, b_{m(n)})\) and get part of the secret coefficient vector, namely \(\vs \bmod \qq(n)\).</li>
+<li>Repeat this for different values of \(\qq(n)\).</li>
+</ol>
+
+<p>
+Some differences between \(\BDD\) and \(\LWE\) can be seen in this reduction.  The lattice given as part of the \(\BDD\) input is any lattice.  The input to the \(\LWE\) problem has an associated random lattice that can be computed from the \(\va_i\)'s.  The classical hardness result for \(\LWE\) uses this part of the reduction and shows that if \(\LWE\) is solvable then it is possible to approximate length of a shortest vector of an arbitrary lattice.  In contrast, the length of a shortest vector in the associated \(\LWE\) lattice is easy to compute.  It ends up being long, which is can be useful.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgda6fcca" class="outline-3">
+<h3 id="orgda6fcca"><span class="section-number-3">6.3.</span> The quantum reduction from \(\varphi_0(\dL)\)-\(\SIVP\) to \(\LWE_{n,\qq(n),\alpha(n)}\).</h3>
+<div class="outline-text-3" id="text-6-3">
+<ul class="org-ul">
+<li><p>
+Some notation for quantum samples
+</p>
+
+<p>
+To describe the steps of the quantum reduction in a somewhat concise way the notion of quantum sampling can be used to replace the classical samples.  For a given distribution, a quantum sample is a quantum state whose measurement results in a sample from the same distribution.  
+</p>
+
+<p>
+For this reduction, let \(\Gdist{\dL,r}\) be the discrete gaussian distribution on \(\dL\) with standard deviation \(r\).  This is called \(D_{\dL,r}\) in [Reg09].  A quantum sample of this distribution is the superposition \(\Gsup{\dL,r} = \sum_{\dv\in\dL} \sqrt{p_\dv} |\dv\>\), where \(p_\dv\) is the probability of measuring \(\dv\) from \(\Gdist{\dL,r}\).  Measuring \(\Gsup{\dL,r}\) destroys the state, so the algorithm will need to create a quantum sample in each of \(m(n)\) registers, resulting in the state \(\Gsup{\dL,r}^{\otimes m(n)}\).  This is tensor product notation for the state \(\Gsup{\dL,r}\Gsup{\dL,r} \cdots \Gsup{\dL,r}\), \(m(n)\) times.  To summarize the notation, given the state \(\Gsup{\dL,r}^{\otimes m(n)}\), it can be measured any time to produce \(m(n)\) independent samples from \(\Gdist{\dL,r}\).
+</p></li>
+
+<li>For \(\SIVP\) the reduction will compute \(\Gsup{\dL, \varphi_0(\dL)}^{\otimes m(n)}\), where \(\varphi_0(\dL) = \frac{\sqrt{2n}}{\alpha(n)}\eta_\epsilon(\dL)\).  The approximation factor is therefore not just a function of the dimension \(n\) but also of the input lattice itself.  This quantum sample is enough to solve \(\SIVP\).  Measuring the state will result in samples where \(n\) can be selected such that the length is at most \(\sqrt{n} \varphi_0(\dL)\).</li>
+
+<li><p>
+Reduction sketch
+</p>
+
+<p>
+Let \(\qq(n)\) and \(\pfactor(n)\) be functions.<br />
+Let \(m(n)\) be a polynomial in \(n\).<br />
+Input: \(\pB\) for lattice \(\pL\) of dimension \(n\), target vector \(\vt = \pB\cdot \vs + \vD\), \(\|\vD\| \leq \pfactor(\dL) \lambda_1(\pL)\)
+</p>
+<ol class="org-ol">
+<li>Compute \(\Gsup{\dL,\varphi_{3n}(\dL)}^{\otimes m(n)}\).</li>
+<li>for \(i = 3n-1, 3n-2, \ldots, 0\):
+<ol class="org-ol">
+<li>Measure the state \(\Gsup{\dL,\varphi_{i+1}^{}(\dL)}^{\otimes m(n)}\) to generate \(m(n)\) samples \(\dv_1, \ldots, \dv_{m(n)}\) from \(\Gdist{\dL, \varphi_{i+1}(\dL)}\).</li>
+<li>For \(i = 1,\ldots, m(n)\):
+<ol class="org-ol">
+<li>Compute \(\va_i = \dv_i \cdot \pB \bmod \qq(n)\).</li>
+<li>For \(j = 1, \ldots, m(n)\):
+<ol class="org-ol">
+<li>In new registers, compute \(\sum_{\pv \in \pL} \rho_?(\pv) \sum_{\vt} \rho_?(\vt)|\pv+\vt\>|\vt\>|0\>^{\otimes m(n)}\).</li>
+<li>Compute each \(b_i^{(\vt)} = \dv_i \cdot \vt \bmod 1\), giving
+\[\sum_{\pv \in \pL} \rho_?(\pv) \sum_{\vt} \rho_?(\vt)|\pv+\vt\> |\vt\>|b_1^{(\vt)},\ldots,b_{m(n)}^{(\vt)}\>.\]</li>
+<li>Compute \(\pfactor\)-\(\BDD\) using \(\LWE\) on \((\va_1, b_1^{(\vt)}), \ldots,(\va_{m(n)}, b_{m(n)}^{(\vt)})\) to erase \(\vt\), giving 
+\[\sum_{\pv \in \pL} \rho_?(\pv) \sum_{\vt} \rho_?(\vt)|\pv+\vt\>|0\>|b_1^{(\vt)},\ldots,b_{m(n)}^{(\vt)}\>.\]</li>
+<li>Uncompute each \(b_i^{(\vt)}\) by computing \(\dv_i \cdot (\pv+\vt) = \dv_i \cdot \pv + \dv_i \cdot \vt \bmod 1 =  b_i^{(\vt)}\), subtracting, and running backwards to get
+\[\sum_{\pv \in \pL} \rho_?(\pv) \sum_{\vt} \rho_?(\vt)|\pv+\vt\>|0\>|0\>^{\otimes m(n)}.\]</li>
+
+<li>Compute \(F_{q(n)}\) get \(\Gsup{\dL,\varphi_i(\dL)}\).</li>
+</ol></li>
+</ol></li>
+</ol></li>
+<li>Output \(\Gsup{\dL,\varphi_0(\dL)}^{\otimes m(n)}\).</li>
+</ol></li>
+</ul>
+
+
+
+<div id="orgb500410" class="figure">
 <p><img src="assets/img/reductionblock.svg" alt="reductionblock.svg" class="org-svg" align="right" style="width: 70%" />
 </p>
 </div>
 </div>
 
-<div id="outline-container-org0b26143" class="outline-4">
-<h4 id="org0b26143"><span class="section-number-4">6.1.1.</span> Technical references:</h4>
-<div class="outline-text-4" id="text-6-1-1">
+<div id="outline-container-orgd90ad6f" class="outline-4">
+<h4 id="orgd90ad6f"><span class="section-number-4">6.3.1.</span> Technical references:</h4>
+<div class="outline-text-4" id="text-6-3-1">
 </div>
 <ol class="org-ol">
-<li><a id="orgca6668f"></a>[Reg05]: \(\BDD \leq \LWE\) for \(q(n)=2^{3n}\).<br /></li>
-<li><a id="org1fd93d8"></a>[Pei09]: \(\GapSVL \leq \BDD\)<br /></li>
-<li><a id="orgf06c42d"></a>[LM09]: \(\BDD \leq \SVP\)<br /></li>
-<li><a id="org46fe426"></a>[BLPRS13]: ?<br /></li>
-<li><a id="org2b5fafd"></a>[EH21/EEH22]: \(\BDD \leq_Q \LWE\).<br /></li>
+<li><a id="org1955e99"></a>[Reg05]: \(\BDD \leq \LWE\) for \(q(n)=2^{3n}\).<br /></li>
+<li><a id="orga9cc5e4"></a>[Pei09]: \(\GapSVL \leq \BDD\)<br /></li>
+<li><a id="orgb37514d"></a>[LM09]: \(\BDD \leq \SVP\)<br /></li>
+<li><a id="org3d105f1"></a>[BLPRS13]: ?<br /></li>
+<li><a id="org27b0ee9"></a>[EH21/EEH22]: \(\BDD \leq_Q \LWE\).<br /></li>
 </ol>
 </div>
 </div>
+
+<div id="outline-container-org9f07077" class="outline-3">
+<h3 id="org9f07077"><span class="section-number-3">6.4.</span> </h3>
+</div>
 </div>
 
-<div id="outline-container-orgbf06fa4" class="outline-2">
-<h2 id="orgbf06fa4"><span class="section-number-2">7.</span> Lattice parameters</h2>
+<div id="outline-container-org2f15a61" class="outline-2">
+<h2 id="org2f15a61"><span class="section-number-2">7.</span> Lattice parameters</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-org685e71c" class="outline-3">
-<h3 id="org685e71c"><span class="section-number-3">7.1.</span> Using the dimension \(n = \dim(L)\) might prevent progress.</h3>
+<div id="outline-container-org8ddf307" class="outline-3">
+<h3 id="org8ddf307"><span class="section-number-3">7.1.</span> Using the dimension \(n = \dim(L)\) might prevent progress.</h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
 Running times and approximation factors for lattices have typically been measured as a function of their dimension \(n\).  It makes for nice, clean statements.  For example, LLL is a polynomial-time algorithm to compute vectors within a \(2^n\) factor of the shortest vector.  Babai's algorithm takes also takes a vector in space and computes a close lattice vector that is within a \(2^n\) factor of the closest.  These approximation factors are exponential in the dimension \(n\).  It can be said that there is no efficient algorithm known to achieve subexponential or polynomial approximation factors.  See, for example <a href="https://cseweb.ucsd.edu/classes/fa21/cse206A-a/LecLLL.pdf">Remark 2</a> and <a href="https://web.eecs.umich.edu/~cpeikert/pubs/lattice-survey.pdf">Page 8, Algorithms and Complexity</a>.  Furthermore, this has been the case for decades.  There are also classes of lattice problems that are NP-hard but are not relevant here because they are not in CoNP.
@@ -458,8 +563,8 @@ As one of the L's in LLL once told me, when everyone is stuck on a problem, it i
 </div>
 </div>
 
-<div id="outline-container-orgdd3827a" class="outline-3">
-<h3 id="orgdd3827a"><span class="section-number-3">7.2.</span> Another possibility: lattice periodicity \(\perL\) and finite group rank \(\fgrL\)</h3>
+<div id="outline-container-org2313e30" class="outline-3">
+<h3 id="org2313e30"><span class="section-number-3">7.2.</span> Another possibility: lattice periodicity \(\perL\) and finite group rank \(\fgrL\)</h3>
 <div class="outline-text-3" id="text-7-2">
 <p>
 Without loss of generality, a lattice can be specified by a basis \(\matB\) and numbers \(\per_1(L),\cdots,\per_n(L)\) with the following properties.  Let \(\perL\) be the minimum number such that \(\perL \Z^n \leq L\).
@@ -475,8 +580,8 @@ In particular, \(L \bmod \perL\) is a finite abelian group, and columns \(\vb_{\
 </div>
 </div>
 
-<div id="outline-container-org419be72" class="outline-2">
-<h2 id="org419be72"><span class="section-number-2">8.</span> The classical theoretical justification for LWE</h2>
+<div id="outline-container-orgb3a0ca1" class="outline-2">
+<h2 id="orgb3a0ca1"><span class="section-number-2">8.</span> The classical theoretical justification for LWE</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 Let \(q(n) = 2^{3n}\).
@@ -518,7 +623,7 @@ The input to \(\GapSVL\) and \(\BDD\) includes a lattice \(L\) of dimension \(n\
 </tbody>
 </table>
 
-<div id="orgdd7f971" class="figure">
+<div id="org97ae412" class="figure">
 <p><img src="assets/img/pillar.svg" alt="pillar.svg" class="org-svg" style="width: 30%" align="left" /> 
 </p>
 </div>
@@ -534,8 +639,8 @@ Notes:
 </div>
 </div>
 
-<div id="outline-container-org268cf14" class="outline-2">
-<h2 id="org268cf14"><span class="section-number-2">9.</span> Ideas that may or may not work</h2>
+<div id="outline-container-orgeb02f17" class="outline-2">
+<h2 id="orgeb02f17"><span class="section-number-2">9.</span> Ideas that may or may not work</h2>
 <div class="outline-text-2" id="text-9">
 <ol class="org-ol">
 <li>Amplitude amplification on a state containing shapes around each lattice point.</li>
@@ -544,12 +649,12 @@ Notes:
 </div>
 </div>
 
-<div id="outline-container-orgc30af0c" class="outline-2">
-<h2 id="orgc30af0c"><span class="section-number-2">10.</span> Road blocks</h2>
+<div id="outline-container-org5f6cc45" class="outline-2">
+<h2 id="org5f6cc45"><span class="section-number-2">10.</span> Road blocks</h2>
 <div class="outline-text-2" id="text-10">
 </div>
-<div id="outline-container-org28cda6d" class="outline-3">
-<h3 id="org28cda6d"><span class="section-number-3">10.1.</span> Cannot do the following</h3>
+<div id="outline-container-orgad7fb79" class="outline-3">
+<h3 id="orgad7fb79"><span class="section-number-3">10.1.</span> Cannot do the following</h3>
 <div class="outline-text-3" id="text-10-1">
 <ol class="org-ol">
 <li>Using FHE, given \(\matA, \matA\vs+\ve\), compute \(\matA', \matA'(q/2)\vs+\ve'\).</li>
@@ -557,22 +662,22 @@ Notes:
 </div>
 </div>
 
-<div id="outline-container-orge517a42" class="outline-3">
-<h3 id="orge517a42"><span class="section-number-3">10.2.</span> Besides not finding an algorithm yet, are there other ways to describe why the various problems might or might not have an efficient algorithm?</h3>
+<div id="outline-container-orge428db5" class="outline-3">
+<h3 id="orge428db5"><span class="section-number-3">10.2.</span> Besides not finding an algorithm yet, are there other ways to describe why the various problems might or might not have an efficient algorithm?</h3>
 </div>
 </div>
 
 
-<div id="outline-container-orgb312007" class="outline-2">
-<h2 id="orgb312007"><span class="section-number-2">11.</span> Some lattice facts to organize</h2>
+<div id="outline-container-orga0bb6ee" class="outline-2">
+<h2 id="orga0bb6ee"><span class="section-number-2">11.</span> Some lattice facts to organize</h2>
 <div class="outline-text-2" id="text-11">
 </div>
-<div id="outline-container-org24c653c" class="outline-3">
-<h3 id="org24c653c"><span class="section-number-3">11.1.</span> Lattices and their duals</h3>
+<div id="outline-container-orgf272b86" class="outline-3">
+<h3 id="orgf272b86"><span class="section-number-3">11.1.</span> Lattices and their duals</h3>
 <div class="outline-text-3" id="text-11-1">
 </div>
-<div id="outline-container-org15959d1" class="outline-4">
-<h4 id="org15959d1"><span class="section-number-4">11.1.1.</span> Lattices come in pairs \((L,L^*)\)</h4>
+<div id="outline-container-org78a549f" class="outline-4">
+<h4 id="org78a549f"><span class="section-number-4">11.1.1.</span> Lattices come in pairs \((L,L^*)\)</h4>
 <div class="outline-text-4" id="text-11-1-1">
 <ol class="org-ol">
 <li>\(1 \leq \lambda_1(L) \cdot \lambda_n(L^*) \leq n\).</li>
@@ -582,8 +687,8 @@ Notes:
 </ol>
 </div>
 </div>
-<div id="outline-container-orgc143bc3" class="outline-4">
-<h4 id="orgc143bc3"><span class="section-number-4">11.1.2.</span> Dual problems, approximation factors</h4>
+<div id="outline-container-orga275b84" class="outline-4">
+<h4 id="orga275b84"><span class="section-number-4">11.1.2.</span> Dual problems, approximation factors</h4>
 <div class="outline-text-4" id="text-11-1-2">
 <ol class="org-ol">
 <li>\(\SVP\) vs. \(\CVP\)</li>
@@ -592,12 +697,12 @@ Notes:
 </div>
 </div>
 </div>
-<div id="outline-container-org57f2307" class="outline-3">
-<h3 id="org57f2307"><span class="section-number-3">11.2.</span> Other</h3>
+<div id="outline-container-org31c5c8d" class="outline-3">
+<h3 id="org31c5c8d"><span class="section-number-3">11.2.</span> Other</h3>
 <div class="outline-text-3" id="text-11-2">
 </div>
-<div id="outline-container-orge408a10" class="outline-4">
-<h4 id="orge408a10"><span class="section-number-4">11.2.1.</span> \(\forall\) bases \(\matB\) of \(L\):</h4>
+<div id="outline-container-org571257d" class="outline-4">
+<h4 id="org571257d"><span class="section-number-4">11.2.1.</span> \(\forall\) bases \(\matB\) of \(L\):</h4>
 <div class="outline-text-4" id="text-11-2-1">
 <ol class="org-ol">
 <li>\(\minGS \leq \lambda_1(L)\).</li>
@@ -607,11 +712,11 @@ Notes:
 </ol>
 </div>
 </div>
-<div id="outline-container-org3349f06" class="outline-4">
-<h4 id="org3349f06"><span class="section-number-4">11.2.2.</span> Define \(\gamma\)-SVP for a number \(\gamma\), but \(\gamma\) is usually a monotonically increasing function of \(n\).</h4>
+<div id="outline-container-org46a4ab2" class="outline-4">
+<h4 id="org46a4ab2"><span class="section-number-4">11.2.2.</span> Define \(\gamma\)-SVP for a number \(\gamma\), but \(\gamma\) is usually a monotonically increasing function of \(n\).</h4>
 </div>
-<div id="outline-container-org552e43a" class="outline-4">
-<h4 id="org552e43a"><span class="section-number-4">11.2.3.</span> \(\GapSVP_\gamma\) given \((\matB,d)\)&#x2026;.</h4>
+<div id="outline-container-orgaf2aab5" class="outline-4">
+<h4 id="orgaf2aab5"><span class="section-number-4">11.2.3.</span> \(\GapSVP_\gamma\) given \((\matB,d)\)&#x2026;.</h4>
 </div>
 </div>
 </div>
