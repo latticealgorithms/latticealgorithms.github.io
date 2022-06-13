@@ -380,13 +380,23 @@ To participate send email to {{ site.email }}.  Suggestions about all topics rel
 5. For a basis $\pB$ of a lattice $\pL$, basis dependent quantities like $\|\vb_1\|$, the length of the first column of $\pB$, will be in terms of the basis, and basis independent quantities like $\lambda_1(\pL)$ will be in terms of the lattice.  For example, if $\vb_1\neq 0$, then the inequality $\lambda_1(\pL) \leq \|\vb_1\|$ indicates that one quantity is basis dependent and the other is not.
 
 * $\GapSVP_\gamma$ status
-$\GapSVP_\gamma$ is the decision version of approxmating the length of the shortest vector in a lattice.  Given a basis $\pB$ of an \(n\)-dimensional integer lattice $\pL$ and a number $d\in \R$, decide if $\lambda_1(\pL) \leq d$ or $d\gamma < \lambda_1(\pL)$.  This the case studied in [Reg09].
+$\GapSVP_\gamma$ is the decision version of approximating the length of the shortest vector in a lattice.  Given a basis $\pB$ of an \(n\)-dimensional integer lattice $\pL$ and a number $d\in \R$, decide if $\lambda_1(\pL) \leq d$ or $d\gamma < \lambda_1(\pL)$.  This the case studied in [Reg09].
 1. As a function of the dimension $n$:
    - $\gamma(n) = 2^{n/2}$ is poly time.
    - $\gamma(n) = 2^{n \log \log n/\log n}$ is poly time.
-2. The determinant of $L$ provides information, where $\gamma = 2^{\sqrt{\log \det(L)}}$ is easy.
+2. The determinant of $L$ provides information, where
+   - $\gamma = 2^{\sqrt{\log \det(L)}}$ is poly time.
 3. The period $\perL$ of the lattice $\pL$ and the finite abelian group rank $\fgr$ of $\pL \bmod \perL$ provide information.  Given a lattice $L$, these two quantities are easy to compute.  Then
-   
+   - $\gamma(n) \approx 2^{\sqrt{\fgr \log \perL}}$ is poly time.
+     - For example, for the class of lattices $L$ that have $\fgr = 1$ and $\perL = 2^{n}$, approximation factor $\gamma(n) \approx 2^{\sqrt{n}}$ has an efficient algorithm. Using the determinant bound for this case, the log of the determinant is at least $\log \perL^{n-\fgr} = n^{1/2}(n-1) \approx n^{3/4} \geq \log \perL$, and the square root gives an approximation factor of $2^{n^{3/2}}$.
+     - $\fgr=1$ with an approximation factor that is a polynomial in $n$ is an open problem.
+
+** Algorithm
+1. Given $\pB$ for $\pL$, compute $\perL$, and the finite abelian group rank $\fgr$, and change the basis to have the generators of that group.
+2. Run LLL on $\pB$.  Now $\frac{\lambda_1(\pL)}{2^{\sqrt{\fgr \log \perL}}} \leq \min_i \|\vb_i^*\|$, the $\BDD$ decoding radius, so $\BDD$ can be solved with approximation factor $\frac{1}{2^{\sqrt{\fgr \log \perL}}}$.
+3. Use the $\GapSVL_\gamma$ to $\BDD_{\frac{1}{\gamma}\sqrt{\frac{n}{\log n}}}$ reduction of [Pei09]/[LM09], resulting in an approximation factor of $\gamma(n) = 2^{\sqrt{\fgr \log \perL}} \cdot \sqrt{\frac{\log n}{n}}$ for $\GapSVL$.  
+
+Because of the particular basis dependence algorithm, it also means that sampling from the Gaussian weighted dual lattice is possible out to some related bound.
 
 * Upcoming topics
 
