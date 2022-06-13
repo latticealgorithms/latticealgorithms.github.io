@@ -255,6 +255,7 @@ title: Algorithms for lattice problems in NP \(\cap\) CoNP
 \newcommand{\eps}{\varepsilon}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
 \newcommand{\va}{\mathbf{a}}
 \newcommand{\vb}{\mathbf{b}}
 \newcommand{\vc}{\mathbf{c}}
@@ -299,6 +300,7 @@ title: Algorithms for lattice problems in NP \(\cap\) CoNP
 \newcommand{\dfactor}{\Gamma}
 \newcommand{\vD}{\mathbf{\Delta}}
 \newcommand{\qq}{q}
+\newcommand{\qqn}{q(n)}
 \newcommand{\pv}{\mathbf{v}}
 \newcommand{\dv}{\mathbf{w}}
 \newcommand{\pL}{L}
@@ -370,6 +372,23 @@ The right three regions represent NP intersect CoNP, but most work has focused o
 
 To participate send email to {{ site.email }}.  Suggestions about all topics related to this site are welcome.  This includes technical information, how to organize topics, how to visualize what is known, anything at all.  Help can be public, private, or anoymous.  
 
+* Nomenclature for this website
+1. Problems with efficient algorithms may be called easy, easy to solve, poly time, or polynomial time.
+2. Problems where no efficient algorithm are known may be called open, open problems,  hard, or hard cases.  These really are open problems and should not be confused with NP-hard problems which are hard in a fundamentally different way.
+3. $\GapSVP$, the problem of deciding if a given lattice has a Shortest Vector Length lower or much larger than a given number, will often be called $\GapSVL$ to better reflect the underlying problem.  So $\GapSVP=\GapSVL$ here.
+4. Subexponential has a few different meanings depending on the context.  Here subexponential in $n$ will typically mean a function of the form $2^{n^\epsilon}$, for $\epsilon <1$.  An example is $2^{\sqrt{n}}$.
+5. For a basis $\pB$ of a lattice $\pL$.  Basis dependent quantities like $\|\vb_1\|$, the length of the first column of $\pB$, will be in terms of the basis, and basis independent quantities like $\lambda_1(\pL)$ will be in terms of the lattice.  For example, if $\vb_1\neq 0$, then the inequality $\lambda_1(\pL) \leq \|\vb_1\|$ indicates that one quantity is basis dependent and the other is not.
+
+* $\GapSVP_\gamma$ status
+$\GapSVP_\gamma$ is the decision version of approxmating the length of the shortest vector in a lattice.  Given a basis $\pB$ of an \(n\)-dimensional integer lattice $\pL$ and a number $d\in \R$, decide if $\lambda_1(\pL) \leq d$ or $d\gamma < \lambda_1(\pL)$.  This the case studied in [Reg09].
+1. As a function of the dimension $n$:
+   - $\gamma(n) = 2^{n/2}$ is poly time.
+   - $\gamma(n) = 2^{n \log \log n/\log n}$ is poly time.
+2. The determinant of $L$ provides information, where $\gamma = 2^{\sqrt{\log \det(L)}}$ is easy.
+3. More can be said by looking at the period $\perL$ of the lattice $\pL$ and the finite abelian group rank $\fgr$ of $\pL \bmod \perL$.  Given a lattice $L$, these two quantities are easy to compute.  Then
+   - $\gamma(n) = 2^{\sqrt{\fgr \log \perL}}$ is poly time.
+     - For example, for the class of lattices $L$ that have $\fgr = \sqrt{n}$ and $\perL = 2^{n^{1/4}}$, approxmation factor $\gamma = 2^{n^{3/8}}$ has an efficient algorithm.
+
 * Upcoming topics
 
 1. What is NP intersect CoNP (i.e., NP $\cap$ CoNP) and why is it relevant here?
@@ -425,19 +444,20 @@ One might say that $\BDD \leq \LWE \leq \BDD$ to have a high-level understanding
 The first step of the worst-case to average-case reduction in [Reg09] is a classical reduction from $\BDD$ to $\LWE$.  Here is a sketch.
 
 #+LATEX: \noindent
-Let $\qq(n)$ and $\pfactor(n)$ be functions.\\
+Let $\qqn$ and $\alpha(n)$ be functions such that $2\sqrt{n} \leq \qqn\alpha(n)$.\\
 Let $m(n)$ be a polynomial in $n$.\\
-Input: $\pB$ for lattice $\pL$ of dimension $n$, target vector $\vt = \pB\cdot \vs + \vD$, $\|\vD\| \leq \pfactor(\dL) \lambda_1(\pL)$
-  1. Sample $\dv_1,\ldots, \dv_{m(n)} \in \dL$ according to a Gaussian with parameter $\varphi_{3n}(\dL)$.
-  2. For $i = 1, \ldots , m(n)$:
-     1. Compute $\va_i = \dv_i \cdot \pB \bmod \qq(n)$.
-     2. Compute $b_i = \dv_i \cdot \vt \bmod \qq(n)$.
-  3. Call the $\LWE$ oracle with $(\va_1,b_1), \ldots, (\va_{m(n)}, b_{m(n)})$ and get part of the secret coefficient vector, namely $\vs \bmod \qq(n)$.
-  4. Repeat this for different values of $\qq(n)$.
+Input: $\pB$ for lattice $\pL$ of dimension $n$, target vector $\vt = \pB\cdot \vs + \vD$, $\|\vD\| \leq \alpha(n) \lambda_1(\pL)$.
+  1. Repeat until $\vs$ is computed:
+    1. Sample $\dv_1,\ldots, \dv_{m(n)} \in \dL$ according to a Gaussian with parameter $\varphi_{3n}(\dL)$.
+    2. For $i = 1, \ldots , m(n)$:
+       1. Compute $\va_i = \dv_i \cdot \pB \bmod \qqn$.
+       2. Compute $b_i = \dv_i \cdot \vt \bmod \qqn$.
+    3. Call the $\LWE_{n,\qqn,\alpha}$ oracle with $(\va_1,b_1), \ldots, (\va_{m(n)}, b_{m(n)})$ and get the low-order bits the secret coefficient vector, namely $\vs_\ell = \vs \bmod \qqn$, where $\vs = \vs_h \qqn + \vs_\ell$.
+    4. Set $\vt := \frac{\vt - \pB\cdot \vs_\ell}{\qqn} = \frac{\pB\cdot(\vs_h \qqn + \vs_\ell - \vs_\ell) + \vD}{\qqn} = \frac{\pB \cdot\vs_h\qqn}{\qqn} + \frac{\vD}{\qqn}$.
 
 Some differences between $\BDD$ and $\LWE$ can be seen in this reduction.  The lattice given as part of the $\BDD$ input is any lattice.  The input to the $\LWE$ problem has an associated random lattice that can be computed from the $\va_i$'s.  The classical hardness result for $\LWE$ uses this part of the reduction and shows that if $\LWE$ is solvable then it is possible to approximate length of a shortest vector of an arbitrary lattice.  In contrast, the length of a shortest vector in the associated $\LWE$ lattice is easy to compute.  It ends up being long, which is can be useful.
 
-** The quantum reduction from \(\varphi_0(\dL)\)-$\SIVP$ to $\LWE_{n,\qq(n),\alpha(n)}$.
+** The quantum reduction from \(\varphi_0(\dL)\)-$\SIVP$ to $\LWE_{n,\qqn,\alpha(n)}$.
 - Some notation for quantum samples
 
   To describe the steps of the quantum reduction in a somewhat concise way the notion of quantum sampling can be used to replace the classical samples.  For a given distribution, a quantum sample is a quantum state whose measurement results in a sample from the same distribution.  
@@ -448,14 +468,14 @@ Some differences between $\BDD$ and $\LWE$ can be seen in this reduction.  The l
   
 - Reduction sketch
 
-  Let $\qq(n)$ and $\pfactor(n)$ be functions.\\
+  Let $\qqn$ and $\pfactor(n)$ be functions.\\
   Let $m(n)$ be a polynomial in $n$.\\
   Input: $\pB$ for lattice $\pL$ of dimension $n$, target vector $\vt = \pB\cdot \vs + \vD$, $\|\vD\| \leq \pfactor(\dL) \lambda_1(\pL)$
   1. Compute $\Gsup{\dL,\varphi_{3n}(\dL)}^{\otimes m(n)}$.
   2. for $i = 3n-1, 3n-2, \ldots, 0$:
      1. Measure the state $\Gsup{\dL,\varphi_{i+1}^{}(\dL)}^{\otimes m(n)}$ to generate $m(n)$ samples $\dv_1, \ldots, \dv_{m(n)}$ from $\Gdist{\dL, \varphi_{i+1}(\dL)}$.
      2. For $i = 1,\ldots, m(n)$:
-        1. Compute $\va_i = \dv_i \cdot \pB \bmod \qq(n)$.
+        1. Compute $\va_i = \dv_i \cdot \pB \bmod \qqn$.
         2. For $j = 1, \ldots, m(n)$:
            1. In new registers, compute $\sum_{\pv \in \pL} \rho_?(\pv) \sum_{\vt} \rho_?(\vt)|\pv+\vt\>|\vt\>|0\>^{\otimes m(n)}$.
            2. Compute each $b_i^{(\vt)} = \dv_i \cdot \vt \bmod 1$, giving
@@ -499,12 +519,12 @@ In particular, $L \bmod \perL$ is a finite abelian group, and columns $\vb_{\fgr
 * The classical theoretical justification for LWE
 Let $q(n) = 2^{3n}$.
 
-The input to $\GapSVL$ and $\BDD$ includes a lattice $L$ of dimension $n$.
-| $\LWE_{q(n)}$                                  |  As a function of the  worst-case dimension $n$, period $q(n)$, and dimension $m(n)$ of the associated $\LWE$ lattice $\rndL$, approximating the length of the shortest vector of randomly selected lattices $\rndL$ can be done since, with high probability, $\delta \sqrt{m(n)} \det(\rndL)^{1/n} \leq \lambda_1(\rndL) \leq \sqrt{m(n)}\det(\rndL)^{1/n} = \sqrt{m(n)}q(n)^{1-n/m(n)}$ for a constant $\delta$.
+To understand the basis for $\LWE_{n,n^c}$, the input to $\GapSVL$ and $\BDD$ includes a lattice $L$ of dimension $\sqrt{n}$.
+| $\LWE_{n,n^c} \leftrightarrow \LWE_{\sqrt{n},2^n}$ |  As a function of the  worst-case dimension $n$, period $q(n)$, and dimension $m(n)$ of the associated $\LWE$ lattice $\rndL$, approximating the length of the shortest vector of randomly selected lattices $\rndL$ can be done since, with high probability, $\delta \sqrt{m(n)} \det(\rndL)^{1/n} \leq \lambda_1(\rndL) \leq \sqrt{m(n)}\det(\rndL)^{1/n} = \sqrt{m(n)}q(n)^{1-n/m(n)}$ for a constant $\delta$.
 | $\Bigg\uparrow$                                |
-| $\BDD$                                         |
+| $\BDD$ dimension $\sqrt{n}$                    |
 | $\Bigg\uparrow  \quad i.e., \GapSVL \leq \BDD$ |
-| $\GapSVL$                                      |   Approximate the length of shortest vector a lattice $L$ that us taken from a certain subset of \(n\)-dimensional lattices.
+| $\GapSVL$ dimension $\sqrt{n}$                 |   Approximate the length of shortest vector a lattice $L$ that us taken from a certain subset of \(n\)-dimensional lattices.
 #+ATTR_HTML: :style width: 30% :align left
 [[file:assets/img/pillar.svg]] 
 
@@ -542,4 +562,3 @@ Notes:
 4. $\det(L) = \sqrt{\det(\matB^t\matB)}$, and for the full-rank case, $\det(L) = |\!\det(\matB)|$.
 *** Define \(\gamma\)-SVP for a number $\gamma$, but $\gamma$ is usually a monotonically increasing function of $n$.
 *** $\GapSVP_\gamma$ given $(\matB,d)$....
-
