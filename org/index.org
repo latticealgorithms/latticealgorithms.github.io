@@ -377,7 +377,7 @@ To participate send email to {{ site.email }}.  Suggestions about all topics rel
 2. Problems where no efficient algorithm are known may be called open, open problems,  hard, or hard cases.  These really are open problems and should not be confused with NP-hard problems which are hard in a fundamentally different way.
 3. $\GapSVP$, the problem of deciding if a given lattice has a Shortest Vector Length lower or much larger than a given number, will often be called $\GapSVL$ to better reflect the underlying problem.  So $\GapSVP=\GapSVL$ here.
 4. Subexponential has a few different meanings depending on the context.  Here subexponential in $n$ will typically mean a function of the form $2^{n^\epsilon}$, for $\epsilon <1$.  An example is $2^{\sqrt{n}}$.
-5. For a basis $\pB$ of a lattice $\pL$.  Basis dependent quantities like $\|\vb_1\|$, the length of the first column of $\pB$, will be in terms of the basis, and basis independent quantities like $\lambda_1(\pL)$ will be in terms of the lattice.  For example, if $\vb_1\neq 0$, then the inequality $\lambda_1(\pL) \leq \|\vb_1\|$ indicates that one quantity is basis dependent and the other is not.
+5. For a basis $\pB$ of a lattice $\pL$, basis dependent quantities like $\|\vb_1\|$, the length of the first column of $\pB$, will be in terms of the basis, and basis independent quantities like $\lambda_1(\pL)$ will be in terms of the lattice.  For example, if $\vb_1\neq 0$, then the inequality $\lambda_1(\pL) \leq \|\vb_1\|$ indicates that one quantity is basis dependent and the other is not.
 
 * $\GapSVP_\gamma$ status
 $\GapSVP_\gamma$ is the decision version of approxmating the length of the shortest vector in a lattice.  Given a basis $\pB$ of an \(n\)-dimensional integer lattice $\pL$ and a number $d\in \R$, decide if $\lambda_1(\pL) \leq d$ or $d\gamma < \lambda_1(\pL)$.  This the case studied in [Reg09].
@@ -385,9 +385,8 @@ $\GapSVP_\gamma$ is the decision version of approxmating the length of the short
    - $\gamma(n) = 2^{n/2}$ is poly time.
    - $\gamma(n) = 2^{n \log \log n/\log n}$ is poly time.
 2. The determinant of $L$ provides information, where $\gamma = 2^{\sqrt{\log \det(L)}}$ is easy.
-3. More can be said by looking at the period $\perL$ of the lattice $\pL$ and the finite abelian group rank $\fgr$ of $\pL \bmod \perL$.  Given a lattice $L$, these two quantities are easy to compute.  Then
-   - $\gamma(n) = 2^{\sqrt{\fgr \log \perL}}$ is poly time.
-     - For example, for the class of lattices $L$ that have $\fgr = \sqrt{n}$ and $\perL = 2^{n^{1/4}}$, approxmation factor $\gamma = 2^{n^{3/8}}$ has an efficient algorithm.
+3. The period $\perL$ of the lattice $\pL$ and the finite abelian group rank $\fgr$ of $\pL \bmod \perL$ provide information.  Given a lattice $L$, these two quantities are easy to compute.  Then
+   
 
 * Upcoming topics
 
