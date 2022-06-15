@@ -3,6 +3,10 @@
 #
 #+STARTUP: showall indent
 #+STARTUP: hidestars
+#+LINK: LM09 https://cseweb.ucsd.edu/~daniele/papers/uSVP-BDD.pdf
+#+LINK: Pei09 https://web.eecs.umich.edu/~cpeikert/pubs/svpcrypto.pdf
+#+LINK: Reg09 https://cims.nyu.edu/~regev/papers/qcrypto.pdf
+#+LINK: BLPRS13 https://arxiv.org/pdf/1306.0281v1.pdf
 #+BEGIN_EXPORT html
 ---
 # Feel free to add content and custom Front Matter to this file.
@@ -378,9 +382,11 @@ To participate send email to {{ site.email }}.  Suggestions about all topics rel
 3. $\GapSVP$, the problem of deciding if a given lattice has a Shortest Vector Length lower or much larger than a given number, will often be called $\GapSVL$ to better reflect the underlying problem.  So $\GapSVP=\GapSVL$ here.
 4. Subexponential has a few different meanings depending on the context.  Here subexponential in $n$ will typically mean a function of the form $2^{n^\epsilon}$, for $\epsilon <1$.  An example is $2^{\sqrt{n}}$.
 5. For a basis $\pB$ of a lattice $\pL$, basis dependent quantities like $\|\vb_1\|$, the length of the first column of $\pB$, will be in terms of the basis, and basis independent quantities like $\lambda_1(\pL)$ will be in terms of the lattice.  For example, if $\vb_1\neq 0$, then the inequality $\lambda_1(\pL) \leq \|\vb_1\|$ indicates that one quantity is basis dependent and the other is not.
+6. - $n =$ dimension of an arbitrary lattice.
+   - $m =$ dimension of a random lattice.  
 
 * $\GapSVP_\gamma$ status
-$\GapSVP_\gamma$ is the decision version of approximating the length of the shortest vector in a lattice.  Given a basis $\pB$ of an \(n\)-dimensional integer lattice $\pL$ and a number $d\in \R$, decide if $\lambda_1(\pL) \leq d$ or $d\gamma < \lambda_1(\pL)$.  This the case studied in [Reg09].
+$\GapSVP_\gamma$ is the decision version of approximating the length of the shortest vector in a lattice.  Given a basis $\pB$ of an \(n\)-dimensional integer lattice $\pL$ and a number $d\in \R$, decide if $\lambda_1(\pL) \leq d$ or $d\gamma < \lambda_1(\pL)$.  This the case studied in [[Reg09][Reg09]].
 1. As a function of the dimension $n$:
    - $\gamma(n) = 2^{n/2}$ is poly time.
    - $\gamma(n) = 2^{n \log \log n/\log n}$ is poly time.
@@ -394,7 +400,7 @@ $\GapSVP_\gamma$ is the decision version of approximating the length of the shor
 ** Algorithm
 1. Given $\pB$ for $\pL$, compute $\perL$, and the finite abelian group rank $\fgr$, and change the basis to have the generators of that group.
 2. Run LLL on $\pB$.  Now $\frac{\lambda_1(\pL)}{2^{\sqrt{\fgr \log \perL}}} \leq \min_i \|\vb_i^*\|$, the $\BDD$ decoding radius, so $\BDD$ can be solved with approximation factor $\frac{1}{2^{\sqrt{\fgr \log \perL}}}$.
-3. Use the $\GapSVL_\gamma$ to $\BDD_{\frac{1}{\gamma}\sqrt{\frac{n}{\log n}}}$ reduction of [Pei09]/[LM09], resulting in an approximation factor of $\gamma(n) = 2^{\sqrt{\fgr \log \perL}} \cdot \sqrt{\frac{\log n}{n}}$ for $\GapSVL$.  
+3. Use the $\GapSVL_\gamma$ to $\BDD_{\frac{1}{\gamma}\sqrt{\frac{n}{\log n}}}$ reduction of [[Pei09][Pei09]]/[[LM09][LM09]], resulting in an approximation factor of $\gamma(n) = 2^{\sqrt{\fgr \log \perL}} \cdot \sqrt{\frac{\log n}{n}}$ for $\GapSVL$.  
 
 Because of the particular basis dependence algorithm, it also means that sampling from the Gaussian weighted dual lattice is possible out to some related bound.
 
@@ -450,7 +456,7 @@ One might say that $\BDD \leq \LWE \leq \BDD$ to have a high-level understanding
 
 ** The classical reduction from $\BDD$ to $\LWE$
 
-The first step of the worst-case to average-case reduction in [Reg09] is a classical reduction from $\BDD$ to $\LWE$.  Here is a sketch.
+The first step of the worst-case to average-case reduction in [[Reg09][Reg09]] is a classical reduction from $\BDD$ to $\LWE$.  Here is a sketch.
 
 #+LATEX: \noindent
 Let $\qqn$ and $\alpha(n)$ be functions such that $2\sqrt{n} \leq \qqn\alpha(n)$.\\
@@ -471,7 +477,7 @@ Some differences between $\BDD$ and $\LWE$ can be seen in this reduction.  The l
 
   To describe the steps of the quantum reduction in a somewhat concise way the notion of quantum sampling can be used to replace the classical samples.  For a given distribution, a quantum sample is a quantum state whose measurement results in a sample from the same distribution.  
 
-  For this reduction, let $\Gdist{\dL,r}$ be the discrete gaussian distribution on $\dL$ with standard deviation $r$.  This is called $D_{\dL,r}$ in [Reg09].  A quantum sample of this distribution is the superposition $\Gsup{\dL,r} = \sum_{\dv\in\dL} \sqrt{p_\dv} |\dv\>$, where $p_\dv$ is the probability of measuring $\dv$ from $\Gdist{\dL,r}$.  Measuring $\Gsup{\dL,r}$ destroys the state, so the algorithm will need to create a quantum sample in each of $m(n)$ registers, resulting in the state $\Gsup{\dL,r}^{\otimes m(n)}$.  This is tensor product notation for the state $\Gsup{\dL,r}\Gsup{\dL,r} \cdots \Gsup{\dL,r}$, $m(n)$ times.  To summarize the notation, given the state $\Gsup{\dL,r}^{\otimes m(n)}$, it can be measured any time to produce $m(n)$ independent samples from $\Gdist{\dL,r}$.
+  For this reduction, let $\Gdist{\dL,r}$ be the discrete gaussian distribution on $\dL$ with standard deviation $r$.  This is called $D_{\dL,r}$ in [[Reg09][Reg09]].  A quantum sample of this distribution is the superposition $\Gsup{\dL,r} = \sum_{\dv\in\dL} \sqrt{p_\dv} |\dv\>$, where $p_\dv$ is the probability of measuring $\dv$ from $\Gdist{\dL,r}$.  Measuring $\Gsup{\dL,r}$ destroys the state, so the algorithm will need to create a quantum sample in each of $m(n)$ registers, resulting in the state $\Gsup{\dL,r}^{\otimes m(n)}$.  This is tensor product notation for the state $\Gsup{\dL,r}\Gsup{\dL,r} \cdots \Gsup{\dL,r}$, $m(n)$ times.  To summarize the notation, given the state $\Gsup{\dL,r}^{\otimes m(n)}$, it can be measured any time to produce $m(n)$ independent samples from $\Gdist{\dL,r}$.
 
 - For $\SIVP$ the reduction will compute $\Gsup{\dL, \varphi_0(\dL)}^{\otimes m(n)}$, where $\varphi_0(\dL) = \frac{\sqrt{2n}}{\alpha(n)}\eta_\epsilon(\dL)$.  The approximation factor is therefore not just a function of the dimension $n$ but also of the input lattice itself.  This quantum sample is enough to solve $\SIVP$.  Measuring the state will result in samples where $n$ can be selected such that the length is at most $\sqrt{n} \varphi_0(\dL)$.
   
@@ -479,7 +485,7 @@ Some differences between $\BDD$ and $\LWE$ can be seen in this reduction.  The l
 
   Let $\qqn$ and $\pfactor(n)$ be functions.\\
   Let $m(n)$ be a polynomial in $n$.\\
-  Input: $\pB$ for lattice $\pL$ of dimension $n$, target vector $\vt = \pB\cdot \vs + \vD$, $\|\vD\| \leq \pfactor(\dL) \lambda_1(\pL)$
+  Input: $\pB$ for lattice $\pL$ of dimension $n$, target vector $\vt = \pB\cdot \vs + \vD$, $\|\vD\| \leq \pfactor(n) \lambda_1(\pL)$
   1. Compute $\Gsup{\dL,\varphi_{3n}(\dL)}^{\otimes m(n)}$.
   2. for $i = 3n-1, 3n-2, \ldots, 0$:
      1. Measure the state $\Gsup{\dL,\varphi_{i+1}^{}(\dL)}^{\otimes m(n)}$ to generate $m(n)$ samples $\dv_1, \ldots, \dv_{m(n)}$ from $\Gdist{\dL, \varphi_{i+1}(\dL)}$.
@@ -503,10 +509,10 @@ Some differences between $\BDD$ and $\LWE$ can be seen in this reduction.  The l
 [[file:assets/img/reductionblock.svg]]
 
 *** Technical references:
-**** [Reg05]: $\BDD \leq \LWE$ for $q(n)=2^{3n}$.
-**** [Pei09]: $\GapSVL \leq \BDD$
-**** [LM09]: $\BDD \leq \SVP$
-**** [BLPRS13]: ?
+**** [[Reg09][Reg09]]: $\BDD \leq \LWE$ for $q(n)=2^{3n}$.
+**** [[Pei09][Pei09]]: $\GapSVL \leq \BDD$
+**** [[LM09][LM09]]: $\BDD \leq \SVP$
+**** [[BLPRS13][BLPRS13]]: ?
 **** [EH21/EEH22]: $\BDD \leq_Q \LWE$.
 
 ** 
@@ -533,14 +539,14 @@ To understand the basis for $\LWE_{n,n^c}$, the input to $\GapSVL$ and $\BDD$ in
 | $\Bigg\uparrow$                                |
 | $\BDD$ dimension $\sqrt{n}$                    |
 | $\Bigg\uparrow  \quad i.e., \GapSVL \leq \BDD$ |
-| $\GapSVL$ dimension $\sqrt{n}$                 |   Approximate the length of shortest vector a lattice $L$ that us taken from a certain subset of \(n\)-dimensional lattices.
+| $\GapSVL$ dimension $\sqrt{n}$                 |   Approximate the length of shortest vector a lattice $L$ that is taken from a certain subset of \(n\)-dimensional lattices.
 #+ATTR_HTML: :style width: 30% :align left
 [[file:assets/img/pillar.svg]] 
 
 Notes:
 1. $\GapSVL$ is known as $\GapSVP$ in the literature.  Here the name is changed for two reasons.  First is that it has a mnemonic meaning: the Shortest Vector Length.  Second, when referring to the problem as $\GapSVP$, it is easy to miss the fact that $\LWE$ is based on computing the length of a shortest vector, which may be much easier than computing a shortest vector.
-2. $\BDD \leq \LWE_{2^{3n}}$ is a special case in [Reg09].  It is used as a black box in [Pei09].
-3. $\GapSVL \leq \BDD$ is from [Pei09].
+2. $\BDD \leq \LWE_{2^{3n}}$ is a special case in [[Reg09][Reg09]].  It is used as a black box in [[Pei09][Pei09]].
+3. $\GapSVL \leq \BDD$ is from [[Pei09][Pei09]].
 
 * Ideas that may or may not work
 1. Amplitude amplification on a state containing shapes around each lattice point.
@@ -571,3 +577,6 @@ Notes:
 4. $\det(L) = \sqrt{\det(\matB^t\matB)}$, and for the full-rank case, $\det(L) = |\!\det(\matB)|$.
 *** Define \(\gamma\)-SVP for a number $\gamma$, but $\gamma$ is usually a monotonically increasing function of $n$.
 *** $\GapSVP_\gamma$ given $(\matB,d)$....
+
+
+
