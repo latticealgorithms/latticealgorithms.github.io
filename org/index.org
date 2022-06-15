@@ -366,7 +366,7 @@ This site is dedicated to organizing and presenting what is known about the clas
 
 The goal is to advance research on lattice algorithms.  There are some impediments to working in this area such as its breadth, its increasingly technical nature, notational and language differences, the amount of folklore, and so on.  This site provides an opportunity to have everything relevant to lattice algorithms written in one place, from one point of view, with consistent terminology, and targeted for a broader audience.  Making it available to a broader audience can help build confidence that certain ranges may be difficult to solve.
 
-Here is a picture from [[https://arxiv.org/2201.13450][arxiv.org/abs/2201.13450]]:
+Here is a picture from the paper [[https://arxiv.org/abs/2201.13450][An efficient quantum algorithm for lattice problems achieving subexponential approximation factor]]:
 
 #+ATTR_HTML: :style margin-left: auto; margin-right: auto;
 #+ATTR_HTML: :width 75% 
